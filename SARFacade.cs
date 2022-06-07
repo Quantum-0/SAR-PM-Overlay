@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,13 @@ namespace SAR_Overlay
                 return true;
             }
             return false;
+        }
+
+        public Size GetWindowSize()
+        {
+            NativeMethods.RECT rect;
+            NativeMethods.GetWindowRect(hWnd, out rect);
+            return new Size(rect.right - rect.left, rect.bottom - rect.top);
         }
 
         public bool SetFocusOnGameWindows()

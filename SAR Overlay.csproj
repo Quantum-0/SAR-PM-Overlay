@@ -68,6 +68,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTeleport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTeleport.Designer.cs">
+      <DependentUpon>FormTeleport.cs</DependentUpon>
+    </Compile>
     <Compile Include="NativeMethods.cs" />
     <Compile Include="OverlayForm.cs">
       <SubType>Form</SubType>
@@ -80,6 +86,9 @@
     <Compile Include="SARFacade.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTeleport.resx">
+      <DependentUpon>FormTeleport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OverlayForm.resx">
       <DependentUpon>OverlayForm.cs</DependentUpon>

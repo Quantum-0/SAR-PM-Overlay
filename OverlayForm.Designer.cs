@@ -33,6 +33,7 @@
             this.buttonSoccer = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.buttonTeleport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonNight
@@ -87,11 +88,22 @@
             this.checkBox1.Text = "Добавить ботов";
             this.checkBox1.UseVisualStyleBackColor = false;
             // 
+            // buttonTeleport
+            // 
+            this.buttonTeleport.Location = new System.Drawing.Point(222, 0);
+            this.buttonTeleport.Name = "buttonTeleport";
+            this.buttonTeleport.Size = new System.Drawing.Size(64, 32);
+            this.buttonTeleport.TabIndex = 5;
+            this.buttonTeleport.Text = "Телепорт";
+            this.buttonTeleport.UseVisualStyleBackColor = true;
+            this.buttonTeleport.Click += new System.EventHandler(this.ButtonTeleport_Click);
+            // 
             // OverlayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1235, 32);
+            this.Controls.Add(this.buttonTeleport);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.buttonSoccer);
@@ -101,6 +113,7 @@
             this.Name = "OverlayForm";
             this.Text = "OverlayForm";
             this.Load += new System.EventHandler(this.OverlayForm_Load);
+            this.Click += new System.EventHandler(this.OverlayForm_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +126,6 @@
         private System.Windows.Forms.Button buttonSoccer;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button buttonTeleport;
     }
 }

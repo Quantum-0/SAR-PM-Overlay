@@ -45,6 +45,7 @@ namespace SAR_Overlay
             fm.SAR = sar;
             fm.Show();
             sar.SetFocusOnGameWindows();
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
