@@ -19,27 +19,32 @@ namespace SAR_Overlay
             InitializeComponent();
         }
 
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox1.Checked)
-            {
-                fm.Show();
-            }
-            else
-            {
-                fm.Hide();
-            }
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             if (!NativeMethods.IsAdministrator)
                 label1.Visible = true;
+            else
+                this.Size = new Size(this.Size.Width, this.Size.Height - 35);
         }
 
-        private void Label1_Click(object sender, EventArgs e)
+        private void ButtonStartOverlay_Click(object sender, EventArgs e)
         {
+            if (!NativeMethods.IsAdministrator)
+            {
+                MessageBox.Show("The program cannot emulate user input without admin rights", "No admin rights", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            var sar = SARFacade.CreateFacade();
+            if (sar == null)
+            {
+                MessageBox.Show("Cannot find game window", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            fm.SAR = sar;
+            fm.Show();
+            sar.SetFocusOnGameWindows();
         }
     }
 }

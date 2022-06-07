@@ -28,53 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonStartOverlay = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(83, 125);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(96, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Enable overlay";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Black;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(10, 220);
+            this.label1.Location = new System.Drawing.Point(10, 67);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(499, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Требуется запуск от имени администратора";
             this.label1.Visible = false;
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 97);
+            this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "label2";
+            this.label2.Text = "Your nickname: ";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(102, 6);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(293, 20);
+            this.textBox1.TabIndex = 3;
+            // 
+            // buttonStartOverlay
+            // 
+            this.buttonStartOverlay.Location = new System.Drawing.Point(401, 6);
+            this.buttonStartOverlay.Name = "buttonStartOverlay";
+            this.buttonStartOverlay.Size = new System.Drawing.Size(108, 55);
+            this.buttonStartOverlay.TabIndex = 4;
+            this.buttonStartOverlay.Text = "Open overlay";
+            this.buttonStartOverlay.UseVisualStyleBackColor = true;
+            this.buttonStartOverlay.Click += new System.EventHandler(this.ButtonStartOverlay_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(521, 254);
+            this.ClientSize = new System.Drawing.Size(521, 101);
+            this.Controls.Add(this.buttonStartOverlay);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.Text = "SAR Private Matches Overlay";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -84,10 +93,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonStartOverlay;
     }
 }
 

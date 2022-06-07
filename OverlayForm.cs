@@ -15,6 +15,8 @@ namespace SAR_Overlay
         public const string WINDOW_NAME = "Super Animal Royale";
         IntPtr handle = NativeMethods.FindWindow(null, WINDOW_NAME);
 
+        public SARFacade SAR;
+
         public OverlayForm()
         {
             InitializeComponent();
@@ -27,8 +29,7 @@ namespace SAR_Overlay
 
         private void ButtonMatchID_Click(object sender, EventArgs e)
         {
-            if (NativeMethods.SetForegroundWindow(handle))
-                SendKeys.SendWait("{ENTER}/matchid{ENTER}");
+            SAR.ChatInput("/matchid");
         }
 
         private void ButtonNight_Click(object sender, EventArgs e)

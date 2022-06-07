@@ -79,12 +79,13 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
+            this.checkBox1.BackColor = System.Drawing.Color.LightGray;
             this.checkBox1.Location = new System.Drawing.Point(1045, 9);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(108, 17);
             this.checkBox1.TabIndex = 4;
             this.checkBox1.Text = "Добавить ботов";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.UseVisualStyleBackColor = false;
             // 
             // OverlayForm
             // 
