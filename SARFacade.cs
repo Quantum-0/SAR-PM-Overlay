@@ -46,11 +46,15 @@ namespace SAR_Overlay
                 return null;
         }
 
+        public bool ChatInput(string[] commands)
+        {
+            return commands.Select(line => ChatInput(line)).All(a => a);
+        }
+
         public bool ChatInput(string command)
         {
             if (NativeMethods.SetForegroundWindow(hWnd))
             {
-                Task.Delay(50).Wait();
                 SendKeys.SendWait("{ENTER}" + command + "{ENTER}");
                 return true;
             }
@@ -97,6 +101,8 @@ namespace SAR_Overlay
 
             if (ChatInput(botsEnabled ? "/start" : "/startp"))
                 started = true;
+
+            ChatInput(new[] { "Welcome to Private Match", " controlled by SARPMO", " made by Quantum0 (aka Eat Me OwO)", "Good Luck and Have Fun! UwU" });
             return started;
         }
 
@@ -112,6 +118,32 @@ namespace SAR_Overlay
                     gasSpeed = value;
             }
             get => gasSpeed;
+        }
+
+        private bool gasOn = true;
+        private bool gasStarted = false;
+        public bool GasOn
+        {
+            set
+            {
+                if (gasStarted)
+                    return;
+
+                if (started)
+                {
+                    if (ChatInput(value ? "/gason 1" : "/gasoff"))
+                    {
+                        gasOn = value;
+                        gasStarted = value;
+                    }
+                }
+                else
+                {
+                    if (ChatInput(value ? "/gason" : "/gasoff"))
+                        gasOn = value;
+                }
+            }
+            get => gasOn;
         }
 
         private float gasDamage = 1;

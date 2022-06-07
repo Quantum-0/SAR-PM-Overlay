@@ -34,6 +34,7 @@
             this.buttonStart = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.buttonTeleport = new System.Windows.Forms.Button();
+            this.buttonSwithGas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonNight
@@ -98,11 +99,22 @@
             this.buttonTeleport.UseVisualStyleBackColor = true;
             this.buttonTeleport.Click += new System.EventHandler(this.ButtonTeleport_Click);
             // 
+            // buttonSwithGas
+            // 
+            this.buttonSwithGas.Location = new System.Drawing.Point(292, 0);
+            this.buttonSwithGas.Name = "buttonSwithGas";
+            this.buttonSwithGas.Size = new System.Drawing.Size(64, 32);
+            this.buttonSwithGas.TabIndex = 6;
+            this.buttonSwithGas.Text = "Газ";
+            this.buttonSwithGas.UseVisualStyleBackColor = true;
+            this.buttonSwithGas.Click += new System.EventHandler(this.ButtonSwithGas_Click);
+            // 
             // OverlayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1235, 32);
+            this.Controls.Add(this.buttonSwithGas);
             this.Controls.Add(this.buttonTeleport);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.buttonStart);
@@ -127,5 +139,6 @@
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button buttonTeleport;
+        private System.Windows.Forms.Button buttonSwithGas;
     }
 }

@@ -21,6 +21,9 @@ namespace SAR_Overlay
 
         private void ListBoxLocations_DoubleClick(object sender, EventArgs e)
         {
+            if (listBoxLocations.SelectedItem == null)
+                return;
+
             var coords = listBoxLocations.SelectedItem.ToString().Split('-').First().Split(' ').Take(2).Select(coord => int.Parse(coord)).ToArray();
             selectedCoords = new Point(coords[0], coords[1]);
             Close();

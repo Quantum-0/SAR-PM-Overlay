@@ -55,10 +55,12 @@ namespace SAR_Overlay
 
         private void ButtonStart_Click(object sender, EventArgs e)
         {
-            SAR.ChatInput(checkBox1.Checked ? "/start" : "/startp");
-            checkBox1.Visible = false;
-            buttonStart.Visible = false;
-            buttonSoccer.Visible = false;
+            if (SAR.Start(checkBox1.Checked))
+            {
+                checkBox1.Visible = false;
+                buttonStart.Visible = false;
+                buttonSoccer.Visible = false;
+            }
         }
 
         private void ButtonTeleport_Click(object sender, EventArgs e)
@@ -70,12 +72,17 @@ namespace SAR_Overlay
             f.ShowDialog();
             Cursor.Position = prevPost;
             SAR.SetFocusOnGameWindows();
-            SAR.ChatInput("/tele 1 " + f.selectedCoords.X.ToString() + " " + f.selectedCoords.Y.ToString());
+            SAR.Teleport(f.selectedCoords, 1);
         }
 
         private void OverlayForm_Click(object sender, EventArgs e)
         {
             SAR.SetFocusOnGameWindows();
+        }
+
+        private void ButtonSwithGas_Click(object sender, EventArgs e)
+        {
+            SAR.GasOn = !SAR.GasOn;
         }
     }
 }
