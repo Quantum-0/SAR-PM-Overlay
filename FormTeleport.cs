@@ -33,5 +33,13 @@ namespace SAR_Overlay
         {
             this.TopMost = true;
         }
+
+        private void PictureBoxMap_Click(object sender, EventArgs e)
+        {
+            MouseEventArgs me = (MouseEventArgs)e;
+            var coords = new Point((int)(me.Location.X * 4600 / pictureBoxMap.Size.Width), (int)(4600 - (4600 * me.Location.Y / pictureBoxMap.Size.Height)));
+            selectedCoords = coords;
+            Close();
+        }
     }
 }
