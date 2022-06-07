@@ -35,6 +35,7 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.buttonTeleport = new System.Windows.Forms.Button();
             this.buttonSwithGas = new System.Windows.Forms.Button();
+            this.buttonDuel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonNight
@@ -109,11 +110,22 @@
             this.buttonSwithGas.UseVisualStyleBackColor = true;
             this.buttonSwithGas.Click += new System.EventHandler(this.ButtonSwithGas_Click);
             // 
+            // buttonDuel
+            // 
+            this.buttonDuel.Location = new System.Drawing.Point(953, 0);
+            this.buttonDuel.Name = "buttonDuel";
+            this.buttonDuel.Size = new System.Drawing.Size(64, 32);
+            this.buttonDuel.TabIndex = 7;
+            this.buttonDuel.Text = "Сценарий";
+            this.buttonDuel.UseVisualStyleBackColor = true;
+            this.buttonDuel.Click += new System.EventHandler(this.ButtonDuel_Click);
+            // 
             // OverlayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1235, 32);
+            this.Controls.Add(this.buttonDuel);
             this.Controls.Add(this.buttonSwithGas);
             this.Controls.Add(this.buttonTeleport);
             this.Controls.Add(this.checkBox1);
@@ -140,5 +152,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button buttonTeleport;
         private System.Windows.Forms.Button buttonSwithGas;
+        private System.Windows.Forms.Button buttonDuel;
     }
 }

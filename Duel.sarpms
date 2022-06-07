@@ -1,0 +1,63 @@
+﻿# SAR PRIVATE MATCH SCENARIO
+T	Duel 1x1
+
+# Turn of the gas
+C	/gasoff
+
+# Turn off everything in map
+C	/emus
+C	/hamballs
+C	/moles
+C	/allitems
+
+# Start
+C	/startp
+D	22
+
+P	e
+D	1
+P	e
+D	8
+
+# Fiil inventory to now auto collect them
+C	/tele 1 510 305
+C	/ammo0 60
+C	/ammo0 60
+C	/tape 5
+C	/juice 200
+D	2
+
+# Put items
+C	/tele 1 2672 3015
+C	/gun4
+C	/ammo0 50
+C	/tape 5
+C	/tele 1 2672 2958
+C	/juice 200
+C	/gun11
+C	/armor3
+C	/tele 1 2845 3015
+C	/gun4
+C	/ammo0 50
+C	/tape 5
+C	/tele 1 2840 2958
+C	/juice 200
+C	/gun11
+C	/armor3
+C	/tele 3 2757 2988
+
+# Start!
+C	/tele 1 2756 2988
+C	/god 1
+D	25
+C	/tele 2 2697 2988
+C	/tele 3 2816 2988
+C	3
+D	1
+C	2
+D	1
+C	1
+D	1
+C	/tele 2 2672 2988
+C	/tele 3 2850 2988
+C	FIGHT! OwO

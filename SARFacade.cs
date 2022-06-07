@@ -26,6 +26,40 @@ namespace SAR_Overlay
         }
     }
 
+    public struct Scenario
+    {
+        public interface ScenarioAction { }
+        public struct ScenarioActionChatMessage : ScenarioAction { public string text; }
+        public struct ScenarioActionDelay : ScenarioAction { public float seconds; }
+        public struct ScenarioActionKeyboardInput : ScenarioAction { public string keys; }
+        public struct ScenarioActionStartMatch : ScenarioAction { public bool bots; }
+        public struct ScenarioActionTitle : ScenarioAction { public string title; }
+
+        public List<ScenarioAction> Queue;
+        public string Title;
+
+        public static Scenario Parse(string str)
+        {
+            List<ScenarioAction> list = new List<ScenarioAction>();
+            string title = null;
+            var lines = str.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Where(line => !line.StartsWith("#")).Select(line => line.Split('\t'));
+            foreach (var line in lines)
+            {
+                if (line.First() == "D") // Delay
+                    list.Add(new ScenarioActionDelay() { seconds = float.Parse(line[1]) });
+                else if (line.First() == "C") // Chat / Command
+                    list.Add(new ScenarioActionChatMessage() { text = line[1] });
+                else if (line.First() == "P") // Press key
+                    list.Add(new ScenarioActionKeyboardInput() { keys = line[1] });
+                else if (line.First() == "T") // Press key
+                    title = line[1];
+                else if (line.First() == "S") // Start match
+                    list.Add(new ScenarioActionStartMatch() { bots = line[1] == "+" });
+            }
+            return new Scenario() { Queue = list, Title = title ?? "Unnamed scenario"};
+        }
+    }
+
     public class SARFacade
     {
 
@@ -59,6 +93,34 @@ namespace SAR_Overlay
                 return true;
             }
             return false;
+        }
+
+        private void ExecuteScenarioAction(Scenario.ScenarioAction sa)
+        {
+            if (sa is Scenario.ScenarioActionChatMessage)
+                ChatInput(((Scenario.ScenarioActionChatMessage)(sa)).text);
+            else if (sa is Scenario.ScenarioActionDelay)
+                Task.Delay(TimeSpan.FromSeconds(((Scenario.ScenarioActionDelay)(sa)).seconds)).Wait();
+            else if (sa is Scenario.ScenarioActionKeyboardInput)
+            {
+                NativeMethods.SetForegroundWindow(hWnd);
+                SendKeys.SendWait(((Scenario.ScenarioActionKeyboardInput)(sa)).keys);
+            }
+            else if (sa is Scenario.ScenarioActionStartMatch)
+                Start(((Scenario.ScenarioActionStartMatch)(sa)).bots);
+        }
+
+        public void RunScenario(Scenario scenario)
+        {
+            new Task(() =>
+            {
+                ChatInput(new[] { "SARPMO: Start Scenario \"" + scenario.Title + "\"" });
+                foreach (var sa in scenario.Queue)
+                {
+                    ExecuteScenarioAction(sa);
+                    Task.Delay(100).Wait();
+                }
+            }).Start();            
         }
 
         public Size GetWindowSize()

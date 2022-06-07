@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,6 +84,13 @@ namespace SAR_Overlay
         private void ButtonSwithGas_Click(object sender, EventArgs e)
         {
             SAR.GasOn = !SAR.GasOn;
+        }
+
+        private void ButtonDuel_Click(object sender, EventArgs e)
+        {
+            // TODO: Open dialog with choosing scenarious from folder
+            var sce = File.ReadAllText("../../Duel.sarpms");
+            SAR.RunScenario(Scenario.Parse(sce));
         }
     }
 }
