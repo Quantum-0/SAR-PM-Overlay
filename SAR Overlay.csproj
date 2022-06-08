@@ -131,8 +131,9 @@
   <ItemGroup>
     <None Include="Duel.sarpms" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="Map.png" />
+    <None Include="Resources\Map.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
