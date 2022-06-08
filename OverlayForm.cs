@@ -92,5 +92,15 @@ namespace SAR_Overlay
             var sce = File.ReadAllText("../../Duel.sarpms");
             SAR.RunScenario(Scenario.Parse(sce));
         }
+
+        private void TrackBarGasSpeed_Scroll(object sender, EventArgs e)
+        {
+            SAR.GasSpeed = (float)(trackBarGasSpeed.Value) / 10;
+        }
+
+        private void TrackBarGasDamage_Scroll(object sender, EventArgs e)
+        {
+            SAR.GasDamage = (float)(trackBarGasDamage.Value) / 10;
+        }
     }
 }
