@@ -1,0 +1,7 @@
+﻿4080 2050 - Port Pixile
+3265 1215 - Goldwood
+2715 1400 - Ferm
+2144 1017 - Swamp
+687 697 - Start
+1480 1874 - Beavers
+1405 2660 - Pyramid Enter

@@ -131,7 +131,9 @@
   <ItemGroup>
     <None Include="Duel.sarpms" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Config\Locations.txt" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Map.jpg" />
   </ItemGroup>

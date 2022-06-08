@@ -42,14 +42,6 @@
             // 
             this.listBoxLocations.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxLocations.FormattingEnabled = true;
-            this.listBoxLocations.Items.AddRange(new object[] {
-            "4080 2050 - Port Pixile",
-            "3265 1215 - Goldwood",
-            "2715 1400 - Ferm",
-            "2144 1017 - Boloto",
-            "687 697 - Start",
-            "1480 1874 - Beavers",
-            "1405 2660 - Pyramid Enter"});
             this.listBoxLocations.Location = new System.Drawing.Point(0, 0);
             this.listBoxLocations.Name = "listBoxLocations";
             this.listBoxLocations.Size = new System.Drawing.Size(153, 645);

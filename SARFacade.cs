@@ -21,7 +21,7 @@ namespace SAR_Overlay
         {
             get
             {
-                return $"{(char)(65 + 8 * Coords.X / mapSize.Width)}{(8 * Coords.Y / mapSize.Height) + 1}";
+                return $"{(char)(65 + 8 * Coords.X / mapSize.Width)}{(8 - 8 * Coords.Y / mapSize.Height)}";
             }
         }
 
@@ -37,7 +37,7 @@ namespace SAR_Overlay
 
         public override string ToString()
         {
-            return $"[{Square}] {Title} ({Coords.X}, {Coords.Y}}";
+            return $"[{Square}] {Title} ({Coords.X}, {Coords.Y})";
         }
     }
 

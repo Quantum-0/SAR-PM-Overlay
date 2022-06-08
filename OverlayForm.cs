@@ -31,7 +31,7 @@ namespace SAR_Overlay
 
         private void LoadLocations()
         {
-            var locations = File.ReadAllText("../../Locations.txt");
+            var locations = File.ReadAllText("../../Config/Locations.txt");
             Locations = locations.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Select(loc => SARLocation.Parse(loc)).ToArray();
         }
 
@@ -76,6 +76,7 @@ namespace SAR_Overlay
             var windowSize = SAR.GetWindowSize();
             var prevPost = Cursor.Position;
             Cursor.Position = new Point(windowSize.Width / 2, windowSize.Height / 2);
+            LoadLocations();
             var f = new FormTeleport(Locations);
             f.ShowDialog();
             Cursor.Position = prevPost;
