@@ -14,9 +14,12 @@ namespace SAR_Overlay
     {
         public Point selectedCoords;
 
-        public FormTeleport()
+        public FormTeleport(SARLocation[] locations)
         {
             InitializeComponent();
+            listBoxLocations.Items.Clear();
+            foreach (var loc in locations)
+                listBoxLocations.Items.Add(loc);
         }
 
         private void ListBoxLocations_DoubleClick(object sender, EventArgs e)
@@ -24,8 +27,7 @@ namespace SAR_Overlay
             if (listBoxLocations.SelectedItem == null)
                 return;
 
-            var coords = listBoxLocations.SelectedItem.ToString().Split('-').First().Split(' ').Take(2).Select(coord => int.Parse(coord)).ToArray();
-            selectedCoords = new Point(coords[0], coords[1]);
+            selectedCoords = ((SARLocation)(listBoxLocations.SelectedItem)).Coords;
             Close();
         }
 

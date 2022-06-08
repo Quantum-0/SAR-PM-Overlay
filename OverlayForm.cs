@@ -15,6 +15,7 @@ namespace SAR_Overlay
     {
         public const string WINDOW_NAME = "Super Animal Royale";
         IntPtr handle = NativeMethods.FindWindow(null, WINDOW_NAME);
+        private SARLocation[] Locations;
 
         public SARFacade SAR;
 
@@ -26,6 +27,12 @@ namespace SAR_Overlay
             this.TransparencyKey = Color.Wheat;
             this.TopMost = true;
             this.FormBorderStyle = FormBorderStyle.None;
+        }
+
+        private void LoadLocations()
+        {
+            var locations = File.ReadAllText("../../Locations.txt");
+            Locations = locations.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Select(loc => SARLocation.Parse(loc)).ToArray();
         }
 
         private void ButtonMatchID_Click(object sender, EventArgs e)
@@ -69,7 +76,7 @@ namespace SAR_Overlay
             var windowSize = SAR.GetWindowSize();
             var prevPost = Cursor.Position;
             Cursor.Position = new Point(windowSize.Width / 2, windowSize.Height / 2);
-            var f = new FormTeleport();
+            var f = new FormTeleport(Locations);
             f.ShowDialog();
             Cursor.Position = prevPost;
             SAR.SetFocusOnGameWindows();

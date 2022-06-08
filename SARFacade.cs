@@ -3,11 +3,44 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SAR_Overlay
 {
+    public struct SARLocation
+    {
+        public static readonly Size mapSize = new Size(4600, 4600);
+        private static readonly Regex parser = new Regex(@"(\d{1,4}) (\d{1,4}) - (.*)");
+
+        public Point Coords;
+        public string Title;
+
+        public string Square
+        {
+            get
+            {
+                return $"{(char)(65 + 8 * Coords.X / mapSize.Width)}{(8 * Coords.Y / mapSize.Height) + 1}";
+            }
+        }
+
+        public static SARLocation Parse(string str)
+        {
+            var values = str.Split('\t').ToArray();
+            Match match = parser.Match(str);
+            var x = int.Parse(match.Groups[1].Value);
+            var y = int.Parse(match.Groups[2].Value);
+            var title = match.Groups[3].Value;
+            return new SARLocation() { Coords = new Point(x, y), Title = title };
+        }
+
+        public override string ToString()
+        {
+            return $"[{Square}] {Title} ({Coords.X}, {Coords.Y}}";
+        }
+    }
+
     public struct SARPlayer
     {
         int pID;
