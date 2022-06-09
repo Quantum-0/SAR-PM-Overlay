@@ -31,8 +31,22 @@ namespace SAR_Overlay
 
         private void LoadLocations()
         {
-            var locations = File.ReadAllText("../../Config/Locations.txt");
-            Locations = locations.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Select(loc => SARLocation.Parse(loc)).ToArray();
+            if (Directory.Exists("../../Config"))
+            {
+                if (File.Exists("../../Config/Locations.txt"))
+                {
+                    var locations = File.ReadAllText("../../Config/Locations.txt");
+                    Locations = locations.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Select(loc => SARLocation.Parse(loc)).ToArray();
+                }
+            }
+            else if (Directory.Exists("Config"))
+            {
+                if (File.Exists("Config/Locations.txt"))
+                {
+                    var locations = File.ReadAllText("Config/Locations.txt");
+                    Locations = locations.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Select(loc => SARLocation.Parse(loc)).ToArray();
+                }
+            }
         }
 
         private void ButtonMatchID_Click(object sender, EventArgs e)
@@ -109,6 +123,12 @@ namespace SAR_Overlay
         private void TrackBarGasDamage_Scroll(object sender, EventArgs e)
         {
             SAR.GasDamage = (float)(trackBarGasDamage.Value) / 10;
+        }
+
+        private void ButtonClose_Click(object sender, EventArgs e)
+        {
+            Close();
+            Application.Exit();
         }
     }
 }

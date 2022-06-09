@@ -25,6 +25,11 @@ namespace SAR_Overlay
                 label1.Visible = true;
             else
                 this.Size = new Size(this.Size.Width, this.Size.Height - 35);
+
+            // Temporary
+            // Todo: use nickname from that form to find self in player list
+            ButtonStartOverlay_Click(sender, e);
+            this.Hide();
         }
 
         private void ButtonStartOverlay_Click(object sender, EventArgs e)
@@ -39,6 +44,7 @@ namespace SAR_Overlay
             if (sar == null)
             {
                 MessageBox.Show("Cannot find game window", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
                 return;
             }
 

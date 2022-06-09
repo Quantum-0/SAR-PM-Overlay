@@ -39,6 +39,7 @@
             this.trackBarGasSpeed = new System.Windows.Forms.TrackBar();
             this.trackBarGasDamage = new System.Windows.Forms.TrackBar();
             this.trackBarBulletSpeed = new System.Windows.Forms.TrackBar();
+            this.buttonClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGasSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGasDamage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarBulletSpeed)).BeginInit();
@@ -77,7 +78,7 @@
             // buttonStart
             // 
             this.buttonStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonStart.Location = new System.Drawing.Point(1159, 0);
+            this.buttonStart.Location = new System.Drawing.Point(1089, 0);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(64, 32);
             this.buttonStart.TabIndex = 3;
@@ -90,7 +91,7 @@
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox1.AutoSize = true;
             this.checkBox1.BackColor = System.Drawing.Color.LightGray;
-            this.checkBox1.Location = new System.Drawing.Point(1045, 9);
+            this.checkBox1.Location = new System.Drawing.Point(975, 9);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(108, 17);
             this.checkBox1.TabIndex = 4;
@@ -120,7 +121,8 @@
             // buttonDuel
             // 
             this.buttonDuel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDuel.Location = new System.Drawing.Point(975, 0);
+            this.buttonDuel.Enabled = false;
+            this.buttonDuel.Location = new System.Drawing.Point(905, 0);
             this.buttonDuel.Name = "buttonDuel";
             this.buttonDuel.Size = new System.Drawing.Size(64, 32);
             this.buttonDuel.TabIndex = 7;
@@ -130,8 +132,10 @@
             // 
             // trackBarGasSpeed
             // 
+            this.trackBarGasSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarGasSpeed.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.trackBarGasSpeed.Location = new System.Drawing.Point(854, 0);
+            this.trackBarGasSpeed.Enabled = false;
+            this.trackBarGasSpeed.Location = new System.Drawing.Point(784, 0);
             this.trackBarGasSpeed.Maximum = 30;
             this.trackBarGasSpeed.Minimum = 4;
             this.trackBarGasSpeed.Name = "trackBarGasSpeed";
@@ -143,8 +147,10 @@
             // 
             // trackBarGasDamage
             // 
+            this.trackBarGasDamage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarGasDamage.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.trackBarGasDamage.Location = new System.Drawing.Point(733, 0);
+            this.trackBarGasDamage.Enabled = false;
+            this.trackBarGasDamage.Location = new System.Drawing.Point(663, 0);
             this.trackBarGasDamage.Minimum = 1;
             this.trackBarGasDamage.Name = "trackBarGasDamage";
             this.trackBarGasDamage.Size = new System.Drawing.Size(115, 45);
@@ -155,8 +161,9 @@
             // 
             // trackBarBulletSpeed
             // 
+            this.trackBarBulletSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarBulletSpeed.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.trackBarBulletSpeed.Location = new System.Drawing.Point(612, 0);
+            this.trackBarBulletSpeed.Location = new System.Drawing.Point(542, 0);
             this.trackBarBulletSpeed.Maximum = 20;
             this.trackBarBulletSpeed.Minimum = 5;
             this.trackBarBulletSpeed.Name = "trackBarBulletSpeed";
@@ -166,11 +173,23 @@
             this.trackBarBulletSpeed.Value = 10;
             this.trackBarBulletSpeed.Visible = false;
             // 
+            // buttonClose
+            // 
+            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClose.Location = new System.Drawing.Point(1159, 0);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(64, 32);
+            this.buttonClose.TabIndex = 11;
+            this.buttonClose.Text = "Выход";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.ButtonClose_Click);
+            // 
             // OverlayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1235, 32);
+            this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.trackBarBulletSpeed);
             this.Controls.Add(this.trackBarGasDamage);
             this.Controls.Add(this.trackBarGasSpeed);
@@ -184,6 +203,7 @@
             this.Controls.Add(this.buttonNight);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OverlayForm";
+            this.Opacity = 0.5D;
             this.Text = "OverlayForm";
             this.Load += new System.EventHandler(this.OverlayForm_Load);
             this.Click += new System.EventHandler(this.OverlayForm_Click);
@@ -208,5 +228,6 @@
         private System.Windows.Forms.TrackBar trackBarGasSpeed;
         private System.Windows.Forms.TrackBar trackBarGasDamage;
         private System.Windows.Forms.TrackBar trackBarBulletSpeed;
+        private System.Windows.Forms.Button buttonClose;
     }
 }

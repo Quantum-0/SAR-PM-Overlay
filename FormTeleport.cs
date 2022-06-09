@@ -17,9 +17,14 @@ namespace SAR_Overlay
         public FormTeleport(SARLocation[] locations)
         {
             InitializeComponent();
-            listBoxLocations.Items.Clear();
-            foreach (var loc in locations)
-                listBoxLocations.Items.Add(loc);
+            if (locations == null)
+                splitContainer1.Panel1Collapsed = true;
+            else
+            {
+                listBoxLocations.Items.Clear();
+                foreach (var loc in locations)
+                    listBoxLocations.Items.Add(loc);
+            }
         }
 
         private void ListBoxLocations_DoubleClick(object sender, EventArgs e)
