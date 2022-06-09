@@ -37,6 +37,7 @@ namespace SAR_Overlay
             if (!NativeMethods.IsAdministrator)
             {
                 MessageBox.Show("The program cannot emulate user input without admin rights", "No admin rights", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
                 return;
             }
 
