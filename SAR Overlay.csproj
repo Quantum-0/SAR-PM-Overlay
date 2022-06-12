@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,7 +133,9 @@
     <None Include="Duel.sarpms" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\Locations.txt" />
+    <Content Include="Config\Locations.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Map.jpg" />
