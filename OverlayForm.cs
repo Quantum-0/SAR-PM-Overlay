@@ -27,6 +27,9 @@ namespace SAR_Overlay
             this.TransparencyKey = Color.Wheat;
             this.TopMost = true;
             this.FormBorderStyle = FormBorderStyle.None;
+
+            var a = Config.ScenariosList;
+            var b = Config.TeleportLocations;
         }
 
         private void LoadLocations()
@@ -112,7 +115,7 @@ namespace SAR_Overlay
         {
             // TODO: Open dialog with choosing scenarious from folder
             var sce = File.ReadAllText("../../Duel.sarpms");
-            SAR.RunScenario(Scenario.Parse(sce));
+            SAR.RunScenario(SARScenario.Parse(sce));
         }
 
         private void TrackBarGasSpeed_Scroll(object sender, EventArgs e)

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace SAR_Overlay
 {
-    public struct SARLocation
+    public class SARLocation : SARParseble
     {
         public static readonly Size mapSize = new Size(4600, 4600);
         private static readonly Regex parser = new Regex(@"(\d{1,4}) (\d{1,4}) - (.*)");
@@ -25,7 +25,7 @@ namespace SAR_Overlay
             }
         }
 
-        public static SARLocation Parse(string str)
+        public new static SARLocation Parse(string str)
         {
             var values = str.Split('\t').ToArray();
             Match match = parser.Match(str);
@@ -41,17 +41,17 @@ namespace SAR_Overlay
         }
     }
 
-    public struct SARPlayer
+    public class SARPlayer : SARParseble
     {
-        int pID;
-        string Name;
-        string PlayfabID;
-        bool isBot
+        public int pID;
+        public string Name;
+        public string PlayfabID;
+        public bool isBot
         {
             get => String.IsNullOrWhiteSpace(PlayfabID);
         }
 
-        public static SARPlayer Parse(string str)
+        public new static SARPlayer Parse(string str)
         {
             var values = str.Split('\t').ToArray();
             var pID = int.Parse(values[0]);
@@ -59,7 +59,7 @@ namespace SAR_Overlay
         }
     }
 
-    public struct Scenario
+    public class SARScenario : SARParseble
     {
         public interface ScenarioAction { }
         public struct ScenarioActionChatMessage : ScenarioAction { public string text; }
@@ -71,7 +71,7 @@ namespace SAR_Overlay
         public List<ScenarioAction> Queue;
         public string Title;
 
-        public static Scenario Parse(string str)
+        public new static SARScenario Parse(string str)
         {
             List<ScenarioAction> list = new List<ScenarioAction>();
             string title = null;
@@ -88,8 +88,17 @@ namespace SAR_Overlay
                     title = line[1];
                 else if (line.First() == "S") // Start match
                     list.Add(new ScenarioActionStartMatch() { bots = line[1] == "+" });
+
+                // TODO: Q - select players: opens window to choose player
+                // TODO: R - remove not selected players
+                // TODO: W - select weapons
+                // TODO: U - put selected weapons
+                // TODO: replace <PX> to id, where X - selected player index
+                // TODO: T - select teams: several players for several commands
+                // TODO: replace <TX> with several commands: <P1> <P2> and etc for all players in current team
+                // TODO: replace <ME> to yours ID
             }
-            return new Scenario() { Queue = list, Title = title ?? "Unnamed scenario"};
+            return new SARScenario() { Queue = list, Title = title ?? "Unnamed scenario"};
         }
     }
 
@@ -122,28 +131,32 @@ namespace SAR_Overlay
         {
             if (NativeMethods.SetForegroundWindow(hWnd))
             {
-                SendKeys.SendWait("{ENTER}" + command + "{ENTER}");
+                Task.Delay(10).Wait();
+                SendKeys.SendWait("{ENTER}");
+                Task.Delay(10).Wait();
+                SendKeys.SendWait(command + "{ENTER}");
+                Task.Delay(10).Wait();
                 return true;
             }
             return false;
         }
 
-        private void ExecuteScenarioAction(Scenario.ScenarioAction sa)
+        private void ExecuteScenarioAction(SARScenario.ScenarioAction sa)
         {
-            if (sa is Scenario.ScenarioActionChatMessage)
-                ChatInput(((Scenario.ScenarioActionChatMessage)(sa)).text);
-            else if (sa is Scenario.ScenarioActionDelay)
-                Task.Delay(TimeSpan.FromSeconds(((Scenario.ScenarioActionDelay)(sa)).seconds)).Wait();
-            else if (sa is Scenario.ScenarioActionKeyboardInput)
+            if (sa is SARScenario.ScenarioActionChatMessage)
+                ChatInput(((SARScenario.ScenarioActionChatMessage)(sa)).text);
+            else if (sa is SARScenario.ScenarioActionDelay)
+                Task.Delay(TimeSpan.FromSeconds(((SARScenario.ScenarioActionDelay)(sa)).seconds)).Wait();
+            else if (sa is SARScenario.ScenarioActionKeyboardInput)
             {
                 NativeMethods.SetForegroundWindow(hWnd);
-                SendKeys.SendWait(((Scenario.ScenarioActionKeyboardInput)(sa)).keys);
+                SendKeys.SendWait(((SARScenario.ScenarioActionKeyboardInput)(sa)).keys);
             }
-            else if (sa is Scenario.ScenarioActionStartMatch)
-                Start(((Scenario.ScenarioActionStartMatch)(sa)).bots);
+            else if (sa is SARScenario.ScenarioActionStartMatch)
+                Start(((SARScenario.ScenarioActionStartMatch)(sa)).bots);
         }
 
-        public void RunScenario(Scenario scenario)
+        public void RunScenario(SARScenario scenario)
         {
             new Task(() =>
             {
