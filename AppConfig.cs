@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows;
 
 namespace SAR_Overlay
 {
@@ -12,7 +9,7 @@ namespace SAR_Overlay
     // Scenarious - config/scenarious/*.sarpms (SAR Private Match Scenario
     // Locations - config/locations.txt
     // What else?
-    
+
     public static class Config
     {
         private const string locationsFileName = "Locations.txt";
@@ -52,7 +49,7 @@ namespace SAR_Overlay
             }
             catch
             {
-                MessageBox.Show("Error loading from file " + filename, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading from file " + filename, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return new T[] { };
             }
         }

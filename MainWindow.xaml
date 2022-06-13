@@ -1,0 +1,111 @@
+﻿<Window x:Class="SAR_Overlay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SAR_Overlay"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="64" Width="1024" AllowsTransparency="True" WindowStyle="None" Topmost="True" MouseDown="Window_MouseDown" Opacity="1">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <LinearGradientBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                    <RotateTransform CenterY="0.5" CenterX="0.5" Angle="0
+"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </LinearGradientBrush.RelativeTransform>
+            <GradientStop Offset="0"/>
+            <GradientStop Offset="0.7" Color="#7FFFFFFF"/>
+            <GradientStop Color="#BFACD2EC" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid UseLayoutRounding="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <!--
+        <Button x:Name="ButtonMatchID" Content="Match ID" Margin="10,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonMatchID_Click" BorderBrush="#FF4D4D4D" FontWeight="Bold">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonClose" Content="Close" Margin="0,10,10,10" BorderThickness="3" HorizontalAlignment="Right" Width="49" Click="ButtonClose_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        -->
+        <Button x:Name="ButtonMatchID" Content="Match ID" Margin="10,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonMatchID_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonClose" Content="Close" Margin="0,10,10,10" BorderThickness="3" HorizontalAlignment="Right" Width="62" Click="ButtonClose_Click" BorderBrush="white" FontWeight="Bold" Background="#FF761010" Foreground="White" Grid.Column="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonNight" Content="Night" Margin="144,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonNight_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonSoccer" Content="Soccer" Margin="278,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonSoccer_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonTeleport" Content="Teleport" Margin="77,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonTeleport_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonGas" Content="Gas" Margin="211,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonGas_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonStart" Content="Start" Margin="0,10,77,10" BorderThickness="3" HorizontalAlignment="Right" Width="62" Click="ButtonStart_Click" BorderBrush="white" FontWeight="Bold" Background="#FF2B7435" Foreground="White" Grid.Column="2">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <CheckBox x:Name="CheckBoxAddBots" Content="Add Bots" HorizontalAlignment="Right" Margin="0,10,10,38" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Height="16" Width="72"/>
+        <Button x:Name="ButtonScenario" Content="Scenario" Margin="0,10,144,10" BorderThickness="3" HorizontalAlignment="Right" Width="62" Click="ButtonScenario_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White" Grid.Column="2">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Slider x:Name="SliderGasSpeed" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" Width="84" Grid.Column="1" Height="18"/>
+        <Slider x:Name="SliderGasDamage" HorizontalAlignment="Left" Margin="93,0,0,10" Width="84" Height="18" VerticalAlignment="Bottom" Grid.Column="1"/>
+        <Label Content="Gas Speed:" Margin="15,7,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="70" Grid.Column="1" Height="26"/>
+        <Label Content="Gas Damage:" Margin="9,0,0,7" FontWeight="Bold" HorizontalAlignment="Left" Width="82" VerticalAlignment="Bottom" Grid.Column="1" Height="26"/>
+
+
+    </Grid>
+</Window>
