@@ -14,4 +14,4 @@ The list of features available in that overlay:
 - Soccer - *creates a soccer ball*
 - Teleport - *teleports you or another player to selected location, which can be choosen from list or on the map*
 - Start match - *starts match with or without bots*
-- Scenarious - *discribed queue of actions*
+- Scenarious - *executes described queue of actions*
