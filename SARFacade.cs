@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace SAR_Overlay
 {
+    /*
     public class SARWeapon : SARParseble
     {
         public enum SARRarety : int
@@ -56,6 +57,7 @@ namespace SAR_Overlay
             }
         }
     }
+    */
 
     public class SARLocation : SARParseble
     {
@@ -104,6 +106,11 @@ namespace SAR_Overlay
             var values = str.Split('\t').ToArray();
             var pID = int.Parse(values[0]);
             return new SARPlayer() { pID = pID, Name = values[1], PlayfabID = values[2] };
+        }
+
+        public override string ToString()
+        {
+            return $"[{pID}] {Name}";
         }
     }
 
@@ -155,6 +162,8 @@ namespace SAR_Overlay
 
         public const string WINDOW_NAME = "Super Animal Royale";
         IntPtr hWnd;
+        const int delayAfterRefocusToSARWindow = 30;
+        const int delayForChatOpening = 20;
 
         private SARFacade(IntPtr window_handle)
         {
@@ -179,11 +188,10 @@ namespace SAR_Overlay
         {
             if (NativeMethods.SetForegroundWindow(hWnd))
             {
-                Task.Delay(10).Wait();
-                SendKeys.SendWait("{ENTER}");
-                Task.Delay(10).Wait();
-                SendKeys.SendWait(command + "{ENTER}");
-                Task.Delay(10).Wait();
+                Task.Delay(delayAfterRefocusToSARWindow).Wait();
+                System.Windows.Forms.SendKeys.SendWait("{ENTER}");
+                Task.Delay(delayForChatOpening).Wait();
+                System.Windows.Forms.SendKeys.SendWait(command + "{ENTER}");
                 return true;
             }
             return false;
@@ -198,7 +206,7 @@ namespace SAR_Overlay
             else if (sa is SARScenario.ScenarioActionKeyboardInput)
             {
                 NativeMethods.SetForegroundWindow(hWnd);
-                SendKeys.SendWait(((SARScenario.ScenarioActionKeyboardInput)(sa)).keys);
+                System.Windows.Forms.SendKeys.SendWait(((SARScenario.ScenarioActionKeyboardInput)(sa)).keys);
             }
             else if (sa is SARScenario.ScenarioActionStartMatch)
                 Start(((SARScenario.ScenarioActionStartMatch)(sa)).bots);
@@ -227,6 +235,16 @@ namespace SAR_Overlay
         public bool Teleport(Point location, int player_id = 1)
         {
             return ChatInput($"/tele {player_id} {location.X} {location.Y}");
+        }
+
+        public bool SwitchNight()
+        {
+            return ChatInput($"/night");
+        }
+
+        public bool Soccer()
+        {
+            return ChatInput($"/soccer");
         }
 
         private bool botsEnabled = false;
