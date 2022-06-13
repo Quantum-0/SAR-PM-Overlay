@@ -139,6 +139,7 @@
     <Content Include="Config\Locations.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Config\Weapons\Pistol.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Map.jpg" />

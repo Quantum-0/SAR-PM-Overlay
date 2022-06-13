@@ -9,6 +9,54 @@ using System.Windows.Forms;
 
 namespace SAR_Overlay
 {
+    public class SARWeapon : SARParseble
+    {
+        public enum SARRarety : int
+        {
+            Common = 0,
+            Uncommon = 1,
+            Rare = 2,
+            Epic = 3,
+            Legendary = 4,
+        }
+
+        public SARRarety Rarety;
+        private Image image = null;
+        public readonly string Title;
+        public readonly uint Index;
+        private string imageFilename;
+
+        public Image Image
+        {
+            get
+            {
+                if (image == null)
+                    LoadImage();
+                return image;
+            }
+        }
+
+        public string Command
+        {
+            get
+            {
+                return $"/gun{Index} {(int)Rarety}";
+            }
+        }
+
+        private void LoadImage()
+        {
+            try
+            {
+                image = Image.FromFile(imageFilename);
+            }
+            catch
+            {
+
+            }
+        }
+    }
+
     public class SARLocation : SARParseble
     {
         public static readonly Size mapSize = new Size(4600, 4600);

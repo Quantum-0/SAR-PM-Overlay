@@ -1,0 +1,6 @@
+﻿# SAR-PM-O Weapon Description File
+
+Pistol
+Пистолет
+0
+Pistol.webp
