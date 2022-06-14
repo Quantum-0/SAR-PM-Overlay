@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SAR_Overlay"
         mc:Ignorable="d"
-        Title="MainWindow" Height="64" Width="1024" AllowsTransparency="True" WindowStyle="None" Topmost="True" MouseDown="Window_MouseDown" Opacity="1">
+        Title="MainWindow" Height="64" Width="1248" AllowsTransparency="True" WindowStyle="None" Topmost="True" MouseDown="Window_MouseDown" Opacity="1">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <LinearGradientBrush.RelativeTransform>
@@ -24,9 +24,9 @@
     </Window.Background>
     <Grid UseLayoutRounding="False">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="8*"/>
-            <ColumnDefinition Width="6*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
         <!--
         <Button x:Name="ButtonMatchID" Content="Match ID" Margin="10,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonMatchID_Click" BorderBrush="#FF4D4D4D" FontWeight="Bold">
@@ -93,7 +93,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <CheckBox x:Name="CheckBoxAddBots" Content="Add Bots" HorizontalAlignment="Right" Margin="0,10,10,38" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Height="16" Width="72"/>
+        <CheckBox x:Name="CheckBoxAddBots" Content="Add Bots" HorizontalAlignment="Right" Margin="0,0,10,12" FontWeight="Bold" Foreground="White" Grid.Column="1" Width="72" Height="16" VerticalAlignment="Bottom"/>
         <Button x:Name="ButtonScenario" Content="Scenario" Margin="0,10,144,10" BorderThickness="3" HorizontalAlignment="Right" Width="62" Click="ButtonScenario_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White" Grid.Column="2">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -101,10 +101,10 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Slider x:Name="SliderGasSpeed" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" Width="84" Grid.Column="1" Height="18" Thumb.DragCompleted="SliderGasSpeed_DragCompleted" Value="1" Minimum="0.4" Maximum="3"/>
-        <Slider x:Name="SliderGasDamage" HorizontalAlignment="Left" Margin="93,0,0,10" Width="84" Height="18" VerticalAlignment="Bottom" Grid.Column="1" Thumb.DragCompleted="SliderGasDamage_DragCompleted" Minimum="1" Value="1"/>
-        <Label Content="Gas Speed:" Margin="15,7,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="70" Grid.Column="1" Height="26"/>
-        <Label Content="Gas Damage:" Margin="9,0,0,7" FontWeight="Bold" HorizontalAlignment="Left" Width="82" VerticalAlignment="Bottom" Grid.Column="1" Height="26"/>
+        <Slider x:Name="SliderGasSpeed" HorizontalAlignment="Left" Margin="88,0,0,11" VerticalAlignment="Bottom" Width="84" Grid.Column="1" Height="18" Thumb.DragCompleted="SliderGasSpeed_DragCompleted" Value="1" Minimum="0.4" Maximum="3"/>
+        <Slider x:Name="SliderGasDamage" HorizontalAlignment="Left" Margin="261,0,0,11" Width="84" Height="18" VerticalAlignment="Bottom" Grid.Column="1" Thumb.DragCompleted="SliderGasDamage_DragCompleted" Minimum="1" Value="1"/>
+        <Label Content="Gas Speed:" Margin="10,0,0,8" VerticalAlignment="Bottom" FontWeight="Bold" HorizontalAlignment="Left" Width="70" Grid.Column="1" Height="26"/>
+        <Label Content="Gas Damage:" Margin="177,0,0,8" FontWeight="Bold" HorizontalAlignment="Left" Width="82" VerticalAlignment="Bottom" Grid.Column="1" Height="26"/>
 
 
     </Grid>
