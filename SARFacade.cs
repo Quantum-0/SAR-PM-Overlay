@@ -181,6 +181,7 @@ namespace SAR_Overlay
         IntPtr hWnd;
         const int delayAfterRefocusToSARWindow = 30;
         const int delayForChatOpening = 20;
+        const int maxChatMessageLength = 70;
 
         private SARFacade(IntPtr window_handle)
         {
@@ -196,13 +197,15 @@ namespace SAR_Overlay
                 return null;
         }
 
-        public bool ChatInput(string[] commands)
+        public bool ChatInput(string[] commands, bool dontCheckLength = false)
         {
-            return commands.Select(line => ChatInput(line)).All(a => a);
+            return commands.Select(line => ChatInput(line, dontCheckLength)).All(a => a);
         }
 
-        public bool ChatInput(string command)
+        public bool ChatInput(string command, bool dontCheckLength = false)
         {
+            if (!dontCheckLength && command.Length > maxChatMessageLength)
+                throw new ArgumentException();
             if (NativeMethods.SetForegroundWindow(hWnd))
             {
                 Task.Delay(delayAfterRefocusToSARWindow).Wait();
@@ -233,7 +236,7 @@ namespace SAR_Overlay
         {
             new Task(() =>
             {
-                ChatInput(new[] { "SARPMO: Start Scenario \"" + scenario.Title + "\"" });
+                ChatInput(new[] { "SARPMO: Start Scenario {\"}" + scenario.Title + "{\"}" });
                 foreach (var sa in scenario.Queue)
                 {
                     ExecuteScenarioAction(sa);
@@ -293,7 +296,7 @@ namespace SAR_Overlay
             if (ChatInput(botsEnabled ? "/start" : "/startp"))
                 started = true;
 
-            ChatInput(new[] { "Welcome to Private Match", " controlled by SARPMO", " made by Quantum0 (aka Eat Me OwO)", "Good Luck and Have Fun! UwU" });
+            ChatInput(new[] { "Welcome to Private Match, controlled by SAR-PMO, made by Eat Me OwO", " {(}aka Quantum0{)}                        Good Luck and Have Fun! UwU" }, true);
             return started;
         }
 
