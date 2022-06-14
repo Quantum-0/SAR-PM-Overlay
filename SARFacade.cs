@@ -206,6 +206,7 @@ namespace SAR_Overlay
         {
             if (!dontCheckLength && command.Length > maxChatMessageLength)
                 throw new ArgumentException();
+            Console.WriteLine($"Command: {command}");
             if (NativeMethods.SetForegroundWindow(hWnd))
             {
                 Task.Delay(delayAfterRefocusToSARWindow).Wait();
@@ -307,8 +308,8 @@ namespace SAR_Overlay
             {
                 if (started)
                     return;
-                value = (float)Math.Min(3.0, Math.Max(value, 0.4));
-                if (ChatInput($"/gasspeed {value}"))
+                value = (float)Math.Round(Math.Min(3.0, Math.Max(value, 0.4)), 1);
+                if (ChatInput($"/gasspeed {value.ToString().Replace(',', '.')}"))
                     gasSpeed = value;
             }
             get => gasSpeed;
@@ -345,8 +346,8 @@ namespace SAR_Overlay
         {
             set
             {
-                value = (float)Math.Min(10, Math.Max(value, 1));
-                if (ChatInput($"/gasdmg  {value}"))
+                value = (float)Math.Round(Math.Min(10, Math.Max(value, 1)), 1);
+                if (ChatInput($"/gasdmg {value.ToString().Replace(',','.')}"))
                     gasDamage = value;
             }
             get => gasDamage;
