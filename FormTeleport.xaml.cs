@@ -23,10 +23,10 @@ namespace SAR_Overlay
 
         private void TeleportAndClose(Point location)
         {
-            if ((ListBoxPlayerSelect.SelectedItem as ListBoxItem).Content == "Me")
+            if ((string)(((ListBoxItem)(ListBoxPlayerSelect.SelectedItem)).Content) == "Me")
                 SAR.Teleport(location);
             else
-                SAR.Teleport(location, ((ListBoxPlayerSelect.SelectedItem as ListBoxItem).Content as SARPlayer).pID);
+                SAR.Teleport(location, ((SARPlayer)((ListBoxItem)ListBoxPlayerSelect.SelectedItem).Content).pID);
             Close();
         }
 
@@ -42,11 +42,13 @@ namespace SAR_Overlay
                 ListBoxPredefinedLocations.Items.Add(loc);
             }
 
-            foreach (var player in SAR.GetPlayers())
-            {
-                var pl = new ListBoxItem() { Content = player, FontStyle = player.isBot ? FontStyles.Italic : FontStyles.Normal };
-                ListBoxPlayerSelect.Items.Add(pl);
-            }
+            var players = SAR.GetPlayers();
+            if (players != null)
+                foreach (var player in players)
+                {
+                    var pl = new ListBoxItem() { Content = player, FontStyle = player.isBot ? FontStyles.Italic : FontStyles.Normal };
+                    ListBoxPlayerSelect.Items.Add(pl);
+                }
         }
 
         private void ImageMap_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -59,7 +61,7 @@ namespace SAR_Overlay
         private void ListBoxPredefinedLocations_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (ListBoxPredefinedLocations.SelectedItem != null)
-                TeleportAndClose(((ListBoxPredefinedLocations.SelectedItem as ListBoxItem).Content as SARLocation).Coords);
+                TeleportAndClose(((SARLocation)((ListBoxItem)ListBoxPredefinedLocations.SelectedItem).Content).Coords);
         }
     }
 }

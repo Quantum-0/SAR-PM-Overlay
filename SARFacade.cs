@@ -62,8 +62,14 @@ namespace SAR_Overlay
         public static readonly Size mapSize = new Size(4600, 4600);
         private static readonly Regex parser = new Regex(@"(\d{1,4}) (\d{1,4}) - (.*)");
 
-        public Point Coords;
-        public string Title;
+        public Point Coords { get; }
+        public string Title { get; }
+
+        private SARLocation(string title, Point coords)
+        {
+            Title = title;
+            Coords = coords;
+        }
 
         public string Square
         {
@@ -80,7 +86,7 @@ namespace SAR_Overlay
             var x = int.Parse(match.Groups[1].Value);
             var y = int.Parse(match.Groups[2].Value);
             var title = match.Groups[3].Value;
-            return new SARLocation() { Coords = new Point(x, y), Title = title };
+            return new SARLocation(title, new Point(x, y));
         }
 
         public override string ToString()
@@ -91,19 +97,26 @@ namespace SAR_Overlay
 
     public class SARPlayer : SARParseble
     {
-        public int pID;
-        public string Name;
-        public string PlayfabID;
+        public int pID { get; }
+        public string Name { get; }
+        public string PlayfabID { get; }
         public bool isBot
         {
             get => String.IsNullOrWhiteSpace(PlayfabID);
+        }
+
+        private SARPlayer(int pID, string name, string playfabID)
+        {
+            this.pID = pID;
+            Name = name;
+            PlayfabID = playfabID;
         }
 
         public new static SARPlayer Parse(string str)
         {
             var values = str.Split('\t').ToArray();
             var pID = int.Parse(values[0]);
-            return new SARPlayer() { pID = pID, Name = values[1], PlayfabID = values[2] };
+            return new SARPlayer(pID, values[1], values[2]);
         }
 
         public override string ToString()
@@ -121,13 +134,19 @@ namespace SAR_Overlay
         public struct ScenarioActionStartMatch : ScenarioAction { public bool bots; }
         public struct ScenarioActionTitle : ScenarioAction { public string title; }
 
-        public List<ScenarioAction> Queue;
-        public string Title;
+        public List<ScenarioAction> Queue { get; }
+        public string Title { get; }
+
+        public SARScenario(string title, List<ScenarioAction> queue)
+        {
+            Queue = queue;
+            Title = title;
+        }
 
         public new static SARScenario Parse(string str)
         {
             List<ScenarioAction> list = new List<ScenarioAction>();
-            string title = null;
+            string? title = null;
             var lines = str.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Where(line => !line.StartsWith("#")).Select(line => line.Split('\t'));
             foreach (var line in lines)
             {
@@ -151,7 +170,7 @@ namespace SAR_Overlay
                 // TODO: replace <TX> with several commands: <P1> <P2> and etc for all players in current team
                 // TODO: replace <ME> to yours ID
             }
-            return new SARScenario() { Queue = list, Title = title ?? "Unnamed scenario"};
+            return new SARScenario(title ?? "Unnamed scenario", list);
         }
     }
 
@@ -168,7 +187,7 @@ namespace SAR_Overlay
             hWnd = window_handle;
         }
 
-        public static SARFacade CreateFacade()
+        public static SARFacade? CreateFacade()
         {
             var h = NativeMethods.FindWindow(null, WINDOW_NAME);
             if (h.ToInt32() != 0)
@@ -330,7 +349,7 @@ namespace SAR_Overlay
             get => gasDamage;
         }
 
-        public SARPlayer[] GetPlayers()
+        public SARPlayer[]? GetPlayers()
         {
             if (!ChatInput("/getplayers"))
                 return null;
