@@ -6,7 +6,7 @@ It displays bar in the bottom of the screen with buttons. When you click on them
 
 [![Lint Code Base](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/lint.yml/badge.svg)](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/lint.yml)
 
-(TODO: INSERT SCREENSHOT HERE)
+![Screenshot](Resources/Screenshot1.jpg)
 
 ## Features
 
