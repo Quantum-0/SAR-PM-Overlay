@@ -101,8 +101,8 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Slider x:Name="SliderGasSpeed" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" Width="84" Grid.Column="1" Height="18"/>
-        <Slider x:Name="SliderGasDamage" HorizontalAlignment="Left" Margin="93,0,0,10" Width="84" Height="18" VerticalAlignment="Bottom" Grid.Column="1"/>
+        <Slider x:Name="SliderGasSpeed" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" Width="84" Grid.Column="1" Height="18" Thumb.DragCompleted="SliderGasSpeed_DragCompleted" Value="1" Minimum="0.4" Maximum="3"/>
+        <Slider x:Name="SliderGasDamage" HorizontalAlignment="Left" Margin="93,0,0,10" Width="84" Height="18" VerticalAlignment="Bottom" Grid.Column="1" Thumb.DragCompleted="SliderGasDamage_DragCompleted" Minimum="1" Value="1"/>
         <Label Content="Gas Speed:" Margin="15,7,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="70" Grid.Column="1" Height="26"/>
         <Label Content="Gas Damage:" Margin="9,0,0,7" FontWeight="Bold" HorizontalAlignment="Left" Width="82" VerticalAlignment="Bottom" Grid.Column="1" Height="26"/>
 

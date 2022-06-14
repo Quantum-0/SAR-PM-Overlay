@@ -90,12 +90,25 @@ namespace SAR_Overlay
                 ButtonSoccer.Visibility = Visibility.Collapsed;
                 CheckBoxAddBots.Visibility = Visibility.Collapsed;
                 ButtonScenario.Visibility = Visibility.Collapsed;
+                SliderGasSpeed.Visibility = Visibility.Collapsed;
             }
         }
 
         private void ButtonScenario_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void SliderGasSpeed_DragCompleted(object sender, EventArgs e)
+        {
+            SAR.GasSpeed = (float)SliderGasSpeed.Value;
+            SliderGasSpeed.Value = SAR.GasSpeed;
+        }
+
+        private void SliderGasDamage_DragCompleted(object sender, EventArgs e)
+        {
+            SAR.GasDamage = (float)SliderGasDamage.Value;
+            SliderGasDamage.Value = SAR.GasDamage;
         }
     }
 }
