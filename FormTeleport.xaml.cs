@@ -23,10 +23,10 @@ namespace SAR_Overlay
 
         private void TeleportAndClose(Point location)
         {
-            if ((string)(((ListBoxItem)(ListBoxPlayerSelect.SelectedItem)).Content) == "Me")
-                SAR.Teleport(location);
-            else
+            if (((ListBoxItem)(ListBoxPlayerSelect.SelectedItem)).Content is SARPlayer)
                 SAR.Teleport(location, ((SARPlayer)((ListBoxItem)ListBoxPlayerSelect.SelectedItem).Content).pID);
+            else
+                SAR.Teleport(location);
             Close();
         }
 
