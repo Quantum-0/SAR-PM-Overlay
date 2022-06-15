@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SAR_Overlay"
         mc:Ignorable="d"
-        Title="MainWindow" Height="64" Width="1248" AllowsTransparency="True" WindowStyle="None" Topmost="True" MouseDown="Window_MouseDown" Opacity="1">
+        Title="MainWindow" Height="64" Width="1600" AllowsTransparency="True" WindowStyle="None" Topmost="True" MouseDown="Window_MouseDown" Opacity="1">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <LinearGradientBrush.RelativeTransform>
@@ -24,7 +24,7 @@
     </Window.Background>
     <Grid UseLayoutRounding="False">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="800"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
@@ -105,6 +105,48 @@
         <Slider x:Name="SliderGasDamage" HorizontalAlignment="Left" Margin="261,0,0,11" Width="84" Height="18" VerticalAlignment="Bottom" Grid.Column="1" Thumb.DragCompleted="SliderGasDamage_DragCompleted" Minimum="1" Value="1"/>
         <Label Content="Gas Speed:" Margin="10,0,0,8" VerticalAlignment="Bottom" FontWeight="Bold" HorizontalAlignment="Left" Width="70" Grid.Column="1" Height="26"/>
         <Label Content="Gas Damage:" Margin="177,0,0,8" FontWeight="Bold" HorizontalAlignment="Left" Width="82" VerticalAlignment="Bottom" Grid.Column="1" Height="26"/>
+        <Button x:Name="ButtonSpawn" Content="Spawn" Margin="345,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonSpawn_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonFlight" Content="Flight" Margin="412,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonFlight_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonOneHits" Content="One Hits" Margin="479,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonOneHits_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonKill" Content="Kill" Margin="546,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonKill_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonKick" Content="Kick" Margin="613,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonKick_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonGod" Content="God" Margin="680,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonGod_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White" MouseRightButtonDown="ButtonGod_MouseRightButtonDown">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
 
     </Grid>
