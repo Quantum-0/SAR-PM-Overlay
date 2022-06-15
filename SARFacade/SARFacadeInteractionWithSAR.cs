@@ -45,8 +45,13 @@ namespace SAR_Overlay
 
         public SARPlayer[]? GetPlayers()
         {
+            Clipboard.Clear();
             if (!ChatInput("/getplayers"))
                 return null;
+
+            var ts = DateTime.Now;
+            while ((DateTime.Now - ts).TotalSeconds < 1 && !Clipboard.ContainsText())
+                Task.Delay(10).Wait();
 
             return Clipboard.GetText().Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Skip(1).Select(line => SARPlayer.Parse(line)).ToArray();
         }

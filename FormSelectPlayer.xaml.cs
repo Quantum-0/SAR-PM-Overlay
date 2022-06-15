@@ -38,9 +38,9 @@ namespace SAR_Overlay
 
         private void ListBoxPlayerSelect_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (ListBoxPlayerSelect.SelectedItem != null && ListBoxPlayerSelect.SelectedItem is SARPlayer)
+            if (ListBoxPlayerSelect.SelectedItem != null && ((ListBoxItem)(ListBoxPlayerSelect.SelectedItem)).Content is SARPlayer)
             {
-                Action.Invoke((SARPlayer)ListBoxPlayerSelect.SelectedItem);
+                Action.Invoke((SARPlayer)((ListBoxItem)(ListBoxPlayerSelect.SelectedItem)).Content);
                 Close();
             }
         }
