@@ -1,181 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace SAR_Overlay
 {
-    /*
-    public class SARWeapon : SARParseble
-    {
-        public enum SARRarety : int
-        {
-            Common = 0,
-            Uncommon = 1,
-            Rare = 2,
-            Epic = 3,
-            Legendary = 4,
-        }
-
-        public SARRarety Rarety;
-        private Image image = null;
-        public readonly string Title;
-        public readonly uint Index;
-        private string imageFilename;
-
-        public Image Image
-        {
-            get
-            {
-                if (image == null)
-                    LoadImage();
-                return image;
-            }
-        }
-
-        public string Command
-        {
-            get
-            {
-                return $"/gun{Index} {(int)Rarety}";
-            }
-        }
-
-        private void LoadImage()
-        {
-            try
-            {
-                image = Image.FromFile(imageFilename);
-            }
-            catch
-            {
-
-            }
-        }
-    }
-    */
-
-    /// <summary> Represents location on the Map in SAR </summary>
-    public class SARLocation : SARParseble
-    {
-        public static readonly Size mapSize = new Size(4600, 4600);
-        private static readonly Regex parser = new Regex(@"(\d{1,4}) (\d{1,4}) - (.*)");
-
-        /// <summary> Coordinates on the map </summary>
-        public Point Coords { get; }
-        /// <summary> Title of the location </summary>
-        public string Title { get; }
-
-        private SARLocation(string title, Point coords)
-        {
-            Title = title;
-            Coords = coords;
-        }
-
-        /// <summary> Square code (from A1 to H8) for point on the map </summary>
-        public string Square
-        {
-            get => $"{(char)(65 + 8 * Coords.X / mapSize.Width)}{(8 - 8 * Coords.Y / mapSize.Height)}";
-        }
-
-        /// <summary> Parses string "X Y - Title" into location object </summary>
-        public new static SARLocation Parse(string str)
-        {
-            var values = str.Split('\t').ToArray();
-            Match match = parser.Match(str);
-            var x = int.Parse(match.Groups[1].Value);
-            var y = int.Parse(match.Groups[2].Value);
-            var title = match.Groups[3].Value;
-            return new SARLocation(title, new Point(x, y));
-        }
-
-        public override string ToString() => $"[{Square}] {Title} ({Coords.X}, {Coords.Y})";
-    }
-
-    public class SARPlayer : SARParseble
-    {
-        public int pID { get; }
-        public string Name { get; }
-        public string PlayfabID { get; }
-        public bool isBot
-        {
-            get => String.IsNullOrWhiteSpace(PlayfabID);
-        }
-
-        private SARPlayer(int pID, string name, string playfabID)
-        {
-            this.pID = pID;
-            Name = name;
-            PlayfabID = playfabID;
-        }
-
-        public new static SARPlayer Parse(string str)
-        {
-            var values = str.Split('\t').ToArray();
-            var pID = int.Parse(values[0]);
-            return new SARPlayer(pID, values[1], values[2]);
-        }
-
-        public override string ToString()
-        {
-            return $"[{pID}] {Name}";
-        }
-    }
-
-    public class SARScenario : SARParseble
-    {
-        public interface ScenarioAction { }
-        public struct ScenarioActionChatMessage : ScenarioAction { public string text; }
-        public struct ScenarioActionDelay : ScenarioAction { public float seconds; }
-        public struct ScenarioActionKeyboardInput : ScenarioAction { public string keys; }
-        public struct ScenarioActionStartMatch : ScenarioAction { public bool bots; }
-        public struct ScenarioActionTitle : ScenarioAction { public string title; }
-
-        public List<ScenarioAction> Queue { get; }
-        public string Title { get; }
-
-        public SARScenario(string title, List<ScenarioAction> queue)
-        {
-            Queue = queue;
-            Title = title;
-        }
-
-        public new static SARScenario Parse(string str)
-        {
-            List<ScenarioAction> list = new List<ScenarioAction>();
-            string? title = null;
-            var lines = str.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Where(line => !line.StartsWith("#")).Select(line => line.Split('\t'));
-            foreach (var line in lines)
-            {
-                if (line.First() == "D") // Delay
-                    list.Add(new ScenarioActionDelay() { seconds = float.Parse(line[1]) });
-                else if (line.First() == "C") // Chat / Command
-                    list.Add(new ScenarioActionChatMessage() { text = line[1] });
-                else if (line.First() == "P") // Press key
-                    list.Add(new ScenarioActionKeyboardInput() { keys = line[1] });
-                else if (line.First() == "T") // Press key
-                    title = line[1];
-                else if (line.First() == "S") // Start match
-                    list.Add(new ScenarioActionStartMatch() { bots = line[1] == "+" });
-
-                // TODO: Q - select players: opens window to choose player
-                // TODO: R - remove not selected players
-                // TODO: W - select weapons
-                // TODO: U - put selected weapons
-                // TODO: replace <PX> to id, where X - selected player index
-                // TODO: T - select teams: several players for several commands
-                // TODO: replace <TX> with several commands: <P1> <P2> and etc for all players in current team
-                // TODO: replace <ME> to yours ID
-            }
-            return new SARScenario(title ?? "Unnamed scenario", list);
-        }
-    }
-
     public class SARFacade
     {
-
         public const string WINDOW_NAME = "Super Animal Royale";
         IntPtr hWnd;
         const int delayAfterRefocusToSARWindow = 30;
@@ -252,15 +83,28 @@ namespace SAR_Overlay
             return new Size(rect.right - rect.left, rect.bottom - rect.top);
         }
 
+        /// <summary> Teleports player with id # to X and Y world position. Maximum values are 4600, 4600. </summary>
         public bool Teleport(Point location, int player_id = 1)
         {
             return ChatInput($"/tele {player_id} {location.X} {location.Y}");
+        }
+
+        /// <summary> Teleports player with id # to X and Y world position. Maximum values are 4600, 4600. </summary>
+        public bool Teleport(SARLocation location, int player_id = 1)
+        {
+            return ChatInput($"/tele {player_id} {location.Coords.X} {location.Coords.Y}");
         }
 
         /// <summary> Kills player (or bot) with specified in-game id  </summary>
         public bool Kill(int player_id)
         {
             return ChatInput($"/kill {player_id}");
+        }
+
+        /// <summary> Kicks player with specified in-game id #. Player cannot rejoin until next match. </summary>
+        public bool Kick(int player_id)
+        {
+            return ChatInput($"/kick {player_id}");
         }
 
         /// <summary> Makes an amount of BananaUI.png Banana pickups spawn near you (max 10) </summary>
@@ -288,7 +132,7 @@ namespace SAR_Overlay
         {
             if (started)
                 return false;
-            return ChatInput("/flight")
+            return ChatInput("/flight");
         }
 
         private bool botsEnabled = false;
