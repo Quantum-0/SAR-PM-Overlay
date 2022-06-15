@@ -44,5 +44,20 @@ namespace SAR_Overlay
                 Close();
             }
         }
+
+        private void TextBoxFilter_GotFocus(object sender, EventArgs e)
+        {
+            TextBoxFilter.SelectAll();
+        }
+
+        private void TextBoxFilter_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            foreach (var lbi in ListBoxPlayerSelect.Items)
+            {
+                #pragma warning disable CS8602
+                ((ListBoxItem)lbi).Visibility = ((ListBoxItem)lbi).Content.ToString().Contains(TextBoxFilter.Text) ? Visibility.Visible : Visibility.Collapsed;
+                #pragma warning restore CS8602
+            }
+        }
     }
 }
