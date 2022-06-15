@@ -86,12 +86,13 @@ namespace SAR_Overlay
                 CheckBoxAddBots.Visibility = Visibility.Collapsed;
                 ButtonScenario.Visibility = Visibility.Collapsed;
                 SliderGasSpeed.Visibility = Visibility.Collapsed;
+                ButtonFlight.Visibility = Visibility.Collapsed;
             }
         }
 
         private void ButtonScenario_Click(object sender, RoutedEventArgs e)
         {
-
+            // TODO
         }
 
         private void SliderGasSpeed_DragCompleted(object sender, EventArgs e)
@@ -126,5 +127,7 @@ namespace SAR_Overlay
         private void ButtonGhost_Click(object sender, RoutedEventArgs e) => new FormSelectPlayer(SAR, SAR.Ghost).ShowDialog();
 
         private void ButtonGod_MouseRightButtonDown(object sender, MouseButtonEventArgs e) => SAR.God(SAR.Me);
+
+        private void ButtonGhost_MouseRightButtonDown(object sender, MouseButtonEventArgs e) => SAR.Ghost(SAR.Me);
     }
 }

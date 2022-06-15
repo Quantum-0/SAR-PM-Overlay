@@ -24,7 +24,7 @@
     </Window.Background>
     <Grid UseLayoutRounding="False">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="800"/>
+            <ColumnDefinition Width="900"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
@@ -141,6 +141,13 @@
             </Button.Resources>
         </Button>
         <Button x:Name="ButtonGod" Content="God" Margin="680,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonGod_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White" MouseRightButtonDown="ButtonGod_MouseRightButtonDown">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonGhost" Content="Ghost" Margin="747,10,0,10" BorderThickness="3" HorizontalAlignment="Left" Width="62" Click="ButtonGhost_Click" BorderBrush="white" FontWeight="Bold" Background="#FF474747" Foreground="White" MouseRightButtonDown="ButtonGhost_MouseRightButtonDown">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
