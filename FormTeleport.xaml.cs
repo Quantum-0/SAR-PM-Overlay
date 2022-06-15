@@ -46,7 +46,7 @@ namespace SAR_Overlay
             if (players != null)
                 foreach (var player in players)
                 {
-                    var pl = new ListBoxItem() { Content = player, FontStyle = player.isBot ? FontStyles.Italic : FontStyles.Normal };
+                    var pl = new ListBoxItem() { Content = player, FontStyle = player.IsBot ? FontStyles.Italic : FontStyles.Normal };
                     ListBoxPlayerSelect.Items.Add(pl);
                 }
         }
