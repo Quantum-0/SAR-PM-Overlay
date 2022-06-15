@@ -57,12 +57,15 @@ namespace SAR_Overlay
     }
     */
 
+    /// <summary> Represents location on the Map in SAR </summary>
     public class SARLocation : SARParseble
     {
         public static readonly Size mapSize = new Size(4600, 4600);
         private static readonly Regex parser = new Regex(@"(\d{1,4}) (\d{1,4}) - (.*)");
 
+        /// <summary> Coordinates on the map </summary>
         public Point Coords { get; }
+        /// <summary> Title of the location </summary>
         public string Title { get; }
 
         private SARLocation(string title, Point coords)
@@ -71,14 +74,13 @@ namespace SAR_Overlay
             Coords = coords;
         }
 
+        /// <summary> Square code (from A1 to H8) for point on the map </summary>
         public string Square
         {
-            get
-            {
-                return $"{(char)(65 + 8 * Coords.X / mapSize.Width)}{(8 - 8 * Coords.Y / mapSize.Height)}";
-            }
+            get => $"{(char)(65 + 8 * Coords.X / mapSize.Width)}{(8 - 8 * Coords.Y / mapSize.Height)}";
         }
 
+        /// <summary> Parses string "X Y - Title" into location object </summary>
         public new static SARLocation Parse(string str)
         {
             var values = str.Split('\t').ToArray();
@@ -89,10 +91,7 @@ namespace SAR_Overlay
             return new SARLocation(title, new Point(x, y));
         }
 
-        public override string ToString()
-        {
-            return $"[{Square}] {Title} ({Coords.X}, {Coords.Y})";
-        }
+        public override string ToString() => $"[{Square}] {Title} ({Coords.X}, {Coords.Y})";
     }
 
     public class SARPlayer : SARParseble
@@ -258,14 +257,38 @@ namespace SAR_Overlay
             return ChatInput($"/tele {player_id} {location.X} {location.Y}");
         }
 
-        public bool SwitchNight()
+        /// <summary> Kills player (or bot) with specified in-game id  </summary>
+        public bool Kill(int player_id)
         {
-            return ChatInput($"/night");
+            return ChatInput($"/kill {player_id}");
         }
 
+        /// <summary> Makes an amount of BananaUI.png Banana pickups spawn near you (max 10) </summary>
+        public bool Banana(int amount = 1)
+        {
+            return ChatInput($"/banana {amount}");
+        }
+
+        /// <summary> Toggles the night mode. </summary>
+        public bool SwitchNight()
+        {
+            return ChatInput("/night");
+        }
+
+        /// <summary> Spawns a Fox Ball (only 1 at a time). </summary>
         public bool Soccer()
         {
-            return ChatInput($"/soccer");
+            if (started)
+                return false;
+            return ChatInput("/soccer");
+        }
+
+        /// <summary> Can be used to regenerate the Eagle flight path. Must run before the game timer has started. </summary>
+        public bool Flight()
+        {
+            if (started)
+                return false;
+            return ChatInput("/flight")
         }
 
         private bool botsEnabled = false;
@@ -286,6 +309,8 @@ namespace SAR_Overlay
             get => started;
         }
 
+        /// <summary> Starts lobby countdown timer (~18s countdown). </summary>
+        /// <param name="withBots">Bots are added to fill player slots.</param>
         public bool Start(bool? withBots = null)
         {
             if (started)
@@ -302,6 +327,7 @@ namespace SAR_Overlay
         }
 
         private float gasSpeed = 1;
+        /// <summary> Speed multiplier of Skunk Gas. Value can be from 0.4 to 3.0 </summary>
         public float GasSpeed
         {
             set
