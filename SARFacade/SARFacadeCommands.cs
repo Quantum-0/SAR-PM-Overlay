@@ -24,10 +24,42 @@ namespace SAR_Overlay
             return ChatInput($"/kill {player_id}");
         }
 
+        /// <summary> Kills player (or bot) with specified in-game id  </summary>
+        public bool Kill(SARPlayer player)
+        {
+            if (!started)
+                return false;
+            return ChatInput($"/kill {player.pID}");
+        }
+
         /// <summary> Kicks player with specified in-game id #. Player cannot rejoin until next match. </summary>
         public bool Kick(int player_id)
         {
             return ChatInput($"/kick {player_id}");
+        }
+
+        /// <summary> Kicks player with specified in-game id #. Player cannot rejoin until next match. </summary>
+        public bool Kick(SARPlayer player)
+        {
+            return ChatInput($"/kick {player.pID}");
+        }
+
+        /// <summary> Set a player to god-mode with ID #. Applies only to player damage. </summary>
+        public bool God(SARPlayer player)
+        {
+            return ChatInput($"/god {player.pID}");
+        }
+
+        /// <summary> Goes into spectate ghost mode. Can be run in lobby, or in-game after death only. </summary>
+        public bool Ghost(SARPlayer player)
+        {
+            return ChatInput($"/ghost {player.pID}");
+        }
+
+        /// <summary> Makes given player infected. </summary>
+        public bool Infect(SARPlayer player)
+        {
+            return ChatInput($"/infect {player.pID}");
         }
 
         /// <summary> Makes an amount of BananaUI.png Banana pickups spawn near you (max 10) </summary>

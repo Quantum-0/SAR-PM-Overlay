@@ -28,6 +28,21 @@ namespace SAR_Overlay
             return false;
         }
 
+        private SARPlayer me;
+        public SARPlayer Me
+        {
+            get
+            {
+                if (me == null)
+                {
+                    var players = GetPlayers();
+                    if (players != null)
+                        me = players.First(); // TODO: Won't work if player is not first, so won't works for moders
+                }
+                return me;
+            }
+        }
+
         public SARPlayer[]? GetPlayers()
         {
             if (!ChatInput("/getplayers"))
