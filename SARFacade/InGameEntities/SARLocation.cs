@@ -15,7 +15,7 @@ namespace SAR_Overlay
         /// <summary> Title of the location </summary>
         public string Title { get; }
         /// <summary> Square code (from A1 to H8) for point on the map </summary>
-        public string Square { get => $"{(char)(65 + 8 * Coords.X / mapSize.Width)}{(8 - 8 * Coords.Y / mapSize.Height)}"; }
+        public string Square { get => $"{(char)(65 + 8 * Coords.X / mapSize.Width)}{(int)(8 - 8 * Coords.Y / mapSize.Height)}"; }
 
         private SARLocation(string title, Point coords)
         {
