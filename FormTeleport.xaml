@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SAR_Overlay"
         mc:Ignorable="d"
-        Title="Teleport" Height="604.366" Width="867.36" Topmost="True">
+        Title="Teleport" Height="604.366" Width="957" Topmost="True">
     <Grid>
-        <Image x:Name="ImageMap" Margin="181,10,136,10" Source="Resources/Map.jpg" Stretch="Fill" Cursor="Cross" MouseLeftButtonDown="ImageMap_MouseLeftButtonDown"/>
-        <ListBox x:Name="ListBoxPredefinedLocations" Margin="0,41,10,10" HorizontalAlignment="Right" Width="121" MouseDoubleClick="ListBoxPredefinedLocations_MouseDoubleClick"/>
-        <Label Content="Predefined locations:" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="121"/>
+        <Image x:Name="ImageMap" Margin="181,10,186,10" Source="Resources/Map.jpg" Stretch="Fill" Cursor="Cross" MouseLeftButtonDown="ImageMap_MouseLeftButtonDown"/>
+        <ListBox x:Name="ListBoxPredefinedLocations" Margin="0,41,10,10" HorizontalAlignment="Right" Width="171" MouseDoubleClick="ListBoxPredefinedLocations_MouseDoubleClick"/>
+        <Label Content="Predefined locations:" Margin="0,10,60,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="121"/>
         <ListBox x:Name="ListBoxPlayerSelect" HorizontalAlignment="Left" Margin="10,41,0,10" Width="166" SelectedIndex="0">
             <ListBoxItem Background="#FFE5FFEA" Content="Me" FontWeight="Bold"/>
         </ListBox>
