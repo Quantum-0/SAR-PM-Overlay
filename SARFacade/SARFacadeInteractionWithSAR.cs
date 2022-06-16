@@ -37,7 +37,19 @@ namespace SAR_Overlay
                 {
                     var players = GetPlayers();
                     if (players != null)
+                    {
+                        // Try to find with name from steam
+                        if (this.SteamUsername != null)
+                        {
+                            var currentPlayer = players.Where(p => p.Name == SteamUsername).FirstOrDefault();
+                            if (currentPlayer != null)
+                            {
+                                me = currentPlayer;
+                                return me;
+                            }
+                        }
                         me = players.First(); // TODO: Won't work if player is not first, so won't works for moders
+                    }
                 }
                 return me;
             }

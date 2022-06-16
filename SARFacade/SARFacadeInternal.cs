@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -11,10 +14,12 @@ namespace SAR_Overlay
         const int delayAfterRefocusToSARWindow = 30;
         const int delayForChatOpening = 20;
         const int maxChatMessageLength = 70;
+        public string SteamUsername { get; private set; } = null;
 
         private SARFacade(IntPtr window_handle)
         {
             hWnd = window_handle;
+            this.SteamUsername = TryReadSteamUsername();
         }
 
         public static SARFacade? CreateFacade()
@@ -24,6 +29,33 @@ namespace SAR_Overlay
                 return new SARFacade(h);
             else
                 return null;
+        }
+
+        private static string? TryReadSteamUsername()
+        {
+            // "\d+"\s*{[\s\S]*?"PersonaName"\t\t"(.*)"\n[\s\S]*?"mostrecent"\t\t"1"[^}]*}
+            const string regexppattern = "\"\\d+\"\\s*{[\\s\\S]*?\"PersonaName\"\\t\\t\"(.*)\"\\n[\\s\\S]*?\"mostrecent\"\\t\\t\"1\"[^}]*}";
+            var steamFolder = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", null);
+            if (steamFolder == null)
+                steamFolder = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Valve\Steam", "InstallPath", null);
+            if (steamFolder == null)
+                return null;
+            var loginUsersFname = Path.Combine((string)steamFolder, @"config\loginusers.vdf");
+            if (!File.Exists(loginUsersFname))
+                return null;
+            string content;
+            try
+            {
+                content = File.ReadAllText(loginUsersFname);
+            }
+            catch
+            {
+                return null;
+            }
+            var match = Regex.Match(content, regexppattern);
+            if (!match.Success)
+                return null;
+            return match.Groups[1].Value;
         }
 
         private void ExecuteScenarioAction(SARScenario.ScenarioAction sa)
