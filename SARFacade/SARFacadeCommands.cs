@@ -127,7 +127,7 @@ namespace SAR_Overlay
 
         /// <summary> Makes a gun spawn near you, with specified gun_id. gun_id value must be from 0 to 17. </summary>
         public bool Gun(Enums.SARWeapon type, Enums.SARRarety? rarety = null) => started &&
-            ChatInput(rarety.HasValue ? $"/gun{(int)type} {rarety}" : $"/ammo{(int)type}");
+            ChatInput(rarety != null ? $"/gun{(int)type} {(int)rarety}" : $"/gun{(int)type}");
 
         /// <summary> Makes a Super Powerup item spawn near you with specified #. Valid # is from 0 to 6 currently. </summary>
         public bool Util(Enums.SARUtil type) => started && ChatInput($"/util{(int)type}");
