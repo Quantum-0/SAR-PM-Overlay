@@ -1,9 +1,12 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace SAR_Overlay
 {
     public partial class SARFacade
     {
+#warning TODO: Regions: IN GAME, IN LOBBY, BOTH
+
         /// <summary> Teleports player with id # to X and Y world position. Maximum values are 4600, 4600. </summary>
         public bool Teleport(Point location, int player_id = 1)
         {
@@ -60,6 +63,48 @@ namespace SAR_Overlay
         public bool Infect(SARPlayer player)
         {
             return ChatInput($"/infect {player.pID}");
+        }
+
+        /// <summary> Makes a Hamster Ball spawn near you. </summary>
+        public bool Hamball()
+        {
+            if (!started)
+                return false;
+            return ChatInput("/hamball");
+        }
+
+        /// <summary> Spawns Health Juice </summary>
+        public bool Juice(int amount = 40)
+        {
+            if (!started)
+                return false;
+            return ChatInput($"/juice {amount}");
+        }
+
+        /// <summary> Spawns Super Tape </summary>
+        public bool Tape(int amount = 3)
+        {
+            if (!started)
+                return false;
+            return ChatInput($"/tape {amount}");
+        }
+
+        /// <summary> Spawns Armor of selected level </summary>
+        public bool Armor(int level = 3)
+        {
+            if (level > 3 || level < 1)
+                throw new ArgumentException();
+            if (!started)
+                return false;
+            return ChatInput($"/armor{level}");
+        }
+
+        /// <summary> Spawns ammo type with a specified value. </summary>
+        public bool Ammo(Enums.SARAmmo type, int? amount)
+        {
+            if (!started)
+                return false;
+            return ChatInput(amount.HasValue ? $"/ammo{(int)type} {amount}" : $"/ammo{(int)type}");
         }
 
         /// <summary> Makes an amount of BananaUI.png Banana pickups spawn near you (max 10) </summary>
