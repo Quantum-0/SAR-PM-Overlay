@@ -119,7 +119,7 @@
         <Button x:Name="ButtonOneHits" Content="One Hits" Margin="479,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonOneHits_Click"/>
         <Button x:Name="ButtonKill" Content="Kill" Margin="546,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonKill_Click"/>
         <Button x:Name="ButtonKick" Content="Kick" Margin="613,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonKick_Click" />
-        <Button x:Name="ButtonGod" Content="God" Margin="680,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonGod_Click"/>
-        <Button x:Name="ButtonGhost" Content="Ghost" Margin="747,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonGhost_Click"/>
+        <Button x:Name="ButtonGod" Content="God" Margin="680,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonGod_Click" MouseRightButtonDown="ButtonGod_MouseRightButtonDown"/>
+        <Button x:Name="ButtonGhost" Content="Ghost" Margin="747,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonGhost_Click" MouseRightButtonDown="ButtonGhost_MouseRightButtonDown"/>
     </Grid>
 </Window>
