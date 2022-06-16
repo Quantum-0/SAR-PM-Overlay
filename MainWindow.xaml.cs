@@ -69,7 +69,7 @@ namespace SAR_Overlay
         private void dispatcherTimer_Tick(object sender, EventArgs e) =>
             this.Opacity = Math.Atan(Math.PI - Math.Max(1, this.Top - NativeMethods.GetMousePosition().Y) / 30) / Math.PI + 0.6;
 
-        private void ButtonNight_Click(object sender, RoutedEventArgs e) => SAR.SwitchNight();
+        private void ButtonNight_Click(object sender, RoutedEventArgs e) => SAR.Night();
 
         private void ButtonGas_Click(object sender, RoutedEventArgs e) => SAR.GasOn = !SAR.GasOn;
 
