@@ -33,6 +33,8 @@ namespace SAR_Overlay
             return new SARPlayer(pID, match.Groups[2].Value, match.Groups[3].Value);
         }
 
+        public static implicit operator int(SARPlayer p) => p.pID;
+
         public override string ToString() => $"[{pID}] {Name}";
     }
 }

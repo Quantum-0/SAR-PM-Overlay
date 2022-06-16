@@ -33,6 +33,8 @@ namespace SAR_Overlay
             return new SARLocation(title, new Point(x, y));
         }
 
+        public static implicit operator Point(SARLocation loc) => loc.Coords;
+
         public override string ToString() => $"[{Square}] {Title} ({Coords.X}, {Coords.Y})";
     }
 }

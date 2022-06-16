@@ -24,7 +24,7 @@ namespace SAR_Overlay
         private void TeleportAndClose(Point location)
         {
             if (((ListBoxItem)(ListBoxPlayerSelect.SelectedItem)).Content is SARPlayer)
-                SAR.Teleport(location, ((SARPlayer)((ListBoxItem)ListBoxPlayerSelect.SelectedItem).Content).pID);
+                SAR.Teleport(location, (SARPlayer)((ListBoxItem)ListBoxPlayerSelect.SelectedItem).Content);
             else
                 SAR.Teleport(location);
             Close();
@@ -61,7 +61,7 @@ namespace SAR_Overlay
         private void ListBoxPredefinedLocations_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (ListBoxPredefinedLocations.SelectedItem != null)
-                TeleportAndClose(((SARLocation)((ListBoxItem)ListBoxPredefinedLocations.SelectedItem).Content).Coords);
+                TeleportAndClose((SARLocation)((ListBoxItem)ListBoxPredefinedLocations.SelectedItem).Content);
         }
     }
 }
