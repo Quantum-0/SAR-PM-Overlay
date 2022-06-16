@@ -136,8 +136,10 @@ namespace SAR_Overlay
 
         /*
          * gun
-         * util
          */
+
+        /// <summary> Makes a Super Powerup item spawn near you with specified #. Valid # is from 0 to 6 currently. </summary>
+        public bool Util(Enums.SARUtil type) => started && ChatInput($"/util{(int)type}");
 
         /// <summary> Makes given player infected. </summary>
         public bool Infect(SARPlayer player) => started && ChatInput($"/infect {player.pID}");
