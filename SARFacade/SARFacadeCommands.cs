@@ -96,9 +96,9 @@ namespace SAR_Overlay
         /// <summary> Teleports player with id # to X and Y world position. Maximum values are 4600, 4600. </summary>
         public bool Teleport(SARLocation location, SARPlayer player) => ChatInput($"/tele {player.pID} {location.Coords.X} {location.Coords.Y}");
 
-        /*
-         * getpos 
-         */
+        /// <summary> Tells you world position of a player with given number </summary>
+        public bool GetPos(SARPlayer player = null) => started &&
+            ChatInput(player != null ? $"/getpos {player.pID}" : $"/getpos");
 
         /// <summary> Goes into spectate ghost mode. Can be run in lobby, or in-game after death only. </summary>
         public bool Ghost(SARPlayer player) => ChatInput($"/ghost {player.pID}");
