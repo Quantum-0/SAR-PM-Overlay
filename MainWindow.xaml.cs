@@ -57,7 +57,7 @@ namespace SAR_Overlay
 
             var dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0,0,0,0,25);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
             dispatcherTimer.Start();
 
             ButtonKill.Visibility = Visibility.Collapsed;
