@@ -72,9 +72,8 @@ namespace SAR_Overlay
         /// <summary> Toggles the night mode. </summary>
         public bool Night() => ChatInput("/night");
 
-        /*
-         * getpid
-         */
+        /// <summary> Shows your in-game player id #. </summary>
+        public bool GetPID() => ChatInput("/getpid");
 
         /// <summary> Kicks player with specified in-game id #. Player cannot rejoin until next match. </summary>
         public bool Kick(int player_id) => ChatInput($"/kick {player_id}");
