@@ -34,7 +34,9 @@ namespace SAR_Overlay
                 return;
             }
 
+#pragma warning disable CS8601
             SAR = SARFacade.CreateFacade();
+#pragma warning restore CS8601
 
             IntPtr handle = NativeMethods.FindWindow(null, WINDOW_NAME);
             if (SAR == null)
