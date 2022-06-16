@@ -14,7 +14,7 @@ namespace SAR_Overlay
         const int delayAfterRefocusToSARWindow = 30;
         const int delayForChatOpening = 20;
         const int maxChatMessageLength = 70;
-        public string SteamUsername { get; private set; } = null;
+        public string? SteamUsername { get; private set; } = null;
 
         private SARFacade(IntPtr window_handle)
         {
