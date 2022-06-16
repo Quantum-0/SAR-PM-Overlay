@@ -62,70 +62,46 @@ namespace SAR_Overlay
 
         #region BOTH LOBBY AND GAME
 
-        public bool MatchID()
-        {
-            return ChatInput("/matchid");
-        }
+        /// <summary> Shows the code that players can enter to join. </summary>
+        public bool MatchID() => ChatInput("/matchid");
 
         /*
          * rainoff
          */
 
         /// <summary> Toggles the night mode. </summary>
-        public bool Night()
-        {
-            return ChatInput("/night");
-        }
+        public bool Night() => ChatInput("/night");
 
         /*
          * getpid
          */
 
         /// <summary> Kicks player with specified in-game id #. Player cannot rejoin until next match. </summary>
-        public bool Kick(int player_id)
-        {
-            return ChatInput($"/kick {player_id}");
-        }
+        public bool Kick(int player_id) => ChatInput($"/kick {player_id}");
 
         /// <summary> Kicks player with specified in-game id #. Player cannot rejoin until next match. </summary>
-        public bool Kick(SARPlayer player)
-        {
-            return ChatInput($"/kick {player.pID}");
-        }
+        public bool Kick(SARPlayer player) =>  ChatInput($"/kick {player.pID}");
 
         /// <summary> Teleports player with id # to X and Y world position. Maximum values are 4600, 4600. </summary>
-        public bool Teleport(Point location, int player_id = 1)
-        {
-            return ChatInput($"/tele {player_id} {location.X} {location.Y}");
-        }
+        public bool Teleport(Point location, int player_id = 1) => ChatInput($"/tele {player_id} {location.X} {location.Y}");
 
         /// <summary> Teleports player with id # to X and Y world position. Maximum values are 4600, 4600. </summary>
-        public bool Teleport(SARLocation location, int player_id = 1)
-        {
-            return ChatInput($"/tele {player_id} {location.Coords.X} {location.Coords.Y}");
-        }
+        public bool Teleport(SARLocation location, int player_id = 1) => ChatInput($"/tele {player_id} {location.Coords.X} {location.Coords.Y}");
+
+# warning TODO: implicit convert SARPlayer to int
 
         /// <summary> Teleports player with id # to X and Y world position. Maximum values are 4600, 4600. </summary>
-        public bool Teleport(Point location, SARPlayer player)
-        {
-            return ChatInput($"/tele {player.pID} {location.X} {location.Y}");
-        }
+        public bool Teleport(Point location, SARPlayer player) => ChatInput($"/tele {player.pID} {location.X} {location.Y}");
 
         /// <summary> Teleports player with id # to X and Y world position. Maximum values are 4600, 4600. </summary>
-        public bool Teleport(SARLocation location, SARPlayer player)
-        {
-            return ChatInput($"/tele {player.pID} {location.Coords.X} {location.Coords.Y}");
-        }
+        public bool Teleport(SARLocation location, SARPlayer player) => ChatInput($"/tele {player.pID} {location.Coords.X} {location.Coords.Y}");
 
         /*
          * getpos 
          */
 
         /// <summary> Goes into spectate ghost mode. Can be run in lobby, or in-game after death only. </summary>
-        public bool Ghost(SARPlayer player)
-        {
-            return ChatInput($"/ghost {player.pID}");
-        }
+        public bool Ghost(SARPlayer player) => ChatInput($"/ghost {player.pID}");
 
         /*
          * gasoff
@@ -137,10 +113,7 @@ namespace SAR_Overlay
          */
 
         /// <summary> Set a player to god-mode with ID #. Applies only to player damage. </summary>
-        public bool God(SARPlayer player)
-        {
-            return ChatInput($"/god {player.pID}");
-        }
+        public bool God(SARPlayer player) => ChatInput($"/god {player.pID}");
 
         #endregion
 
@@ -153,28 +126,13 @@ namespace SAR_Overlay
          */
 
         /// <summary> Kills player (or bot) with specified in-game id  </summary>
-        public bool Kill(int player_id)
-        {
-            if (!started)
-                return false;
-            return ChatInput($"/kill {player_id}");
-        }
+        public bool Kill(int player_id) => started && ChatInput($"/kill {player_id}");
 
         /// <summary> Kills player (or bot) with specified in-game id  </summary>
-        public bool Kill(SARPlayer player)
-        {
-            if (!started)
-                return false;
-            return ChatInput($"/kill {player.pID}");
-        }
+        public bool Kill(SARPlayer player) => started && ChatInput($"/kill {player.pID}");
 
         /// <summary> Makes an amount of BananaUI.png Banana pickups spawn near you (max 10) </summary>
-        public bool Banana(int amount = 1)
-        {
-            if (!started)
-                return false;
-            return ChatInput($"/banana {amount}");
-        }
+        public bool Banana(int amount = 1) => started && ChatInput($"/banana {amount}");
 
         /*
          * gun
@@ -182,18 +140,11 @@ namespace SAR_Overlay
          */
 
         /// <summary> Makes given player infected. </summary>
-        public bool Infect(SARPlayer player)
-        {
-            return ChatInput($"/infect {player.pID}");
-        }
+        public bool Infect(SARPlayer player) => started && ChatInput($"/infect {player.pID}");
 
         /// <summary> Spawns ammo type with a specified value. </summary>
-        public bool Ammo(Enums.SARAmmo type, int? amount)
-        {
-            if (!started)
-                return false;
-            return ChatInput(amount.HasValue ? $"/ammo{(int)type} {amount}" : $"/ammo{(int)type}");
-        }
+        public bool Ammo(Enums.SARAmmo type, int? amount) => started &&
+            ChatInput(amount.HasValue ? $"/ammo{(int)type} {amount}" : $"/ammo{(int)type}");
 
         /// <summary> Spawns Armor of selected level </summary>
         public bool Armor(int level = 3)
@@ -206,27 +157,14 @@ namespace SAR_Overlay
         }
 
         /// <summary> Makes a Hamster Ball spawn near you. </summary>
-        public bool Hamball()
-        {
-            if (!started)
-                return false;
-            return ChatInput("/hamball");
-        }
+        public bool Hamball() => started && ChatInput("/hamball");
 
         /// <summary> Spawns Health Juice </summary>
-        public bool Juice(int amount = 40)
-        {
-            if (!started)
-                return false;
-            return ChatInput($"/juice {amount}");
-        }
+        public bool Juice(int amount = 40) => started && ChatInput($"/juice {amount}");
 
         /// <summary> Spawns Super Tape </summary>
-        public bool Tape(int amount = 3)
-        {
-            if (!started)
-                return false;
-            return ChatInput($"/tape {amount}");
-        }
+        public bool Tape(int amount = 3) => started && ChatInput($"/tape {amount}");
+
+        #endregion
     }
 }
