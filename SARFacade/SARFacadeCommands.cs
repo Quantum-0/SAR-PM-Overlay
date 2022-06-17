@@ -82,7 +82,7 @@ namespace SAR_Overlay
         public bool Kick(SARPlayer player) =>  ChatInput($"/kick {player.pID}");
 
         /// <summary> Teleports player with id # to X and Y world position. Maximum values are 4600, 4600. </summary>
-        public bool Teleport(Point location, int player_id = 1) => ChatInput($"/tele {player_id} {location.X} {location.Y}");
+        public bool Teleport(Point location, int? player_id = null) => ChatInput($"/tele {player_id ?? Me.pID} {location.X} {location.Y}");
 
         /// <summary> Teleports player with id # to X and Y world position. Maximum values are 4600, 4600. </summary>
         public bool Teleport(SARLocation location, SARPlayer player) => ChatInput($"/tele {player.pID} {location.Coords.X} {location.Coords.Y}");
