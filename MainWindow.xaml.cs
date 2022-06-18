@@ -127,6 +127,15 @@ namespace SAR_Overlay
             {
                 ButtonScenario.Visibility = Visibility.Collapsed;
                 SAR.RunScenario(scenario);
+
+                ButtonStart.Visibility = Visibility.Collapsed;
+                ButtonSoccer.Visibility = Visibility.Collapsed;
+                CheckBoxAddBots.Visibility = Visibility.Collapsed;
+                ButtonScenario.Visibility = Visibility.Collapsed;
+                SliderGasSpeed.Visibility = Visibility.Collapsed;
+                ButtonFlight.Visibility = Visibility.Collapsed;
+
+                ButtonKill.Visibility = Visibility.Visible;
             }
         }
 
