@@ -55,5 +55,10 @@ namespace SAR_Overlay
             }
             return new SARScenario(title ?? "Unnamed scenario", list);
         }
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }
