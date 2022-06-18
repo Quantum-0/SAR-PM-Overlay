@@ -23,4 +23,15 @@
     <Compile Remove="FormRunScenario.xaml.cs" />
     <Page Remove="FormRunScenario.xaml" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="FormSelectScenario.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="FormSelectScenario.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
 </Project>
