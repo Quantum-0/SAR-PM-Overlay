@@ -1,0 +1,204 @@
+﻿# SAR PRIVATE MATCH SCENARIO
+T	Duel 1x1 by Woo <3
+
+# Thanks too Woo <3 for that scenario!
+
+# Prepare
+C	/allitems
+C	/hamballs
+C	/emus
+C	/day
+C	/rainoff
+
+# Enable god for all
+C	/god 1
+C	/god 2
+C	/god 3
+C	/god 4
+C	/god 5
+
+# Start match
+C	/startp
+C	/gasoff
+
+C	EN: Please jump out as soon as the match starts
+D	*
+# Waiting for click "continue"
+
+# Place weapons, armors and so on
+
+C	/tele 1 1626 1683
+C	/armor3
+C	/armor3
+C	/armor3
+C	/armor3
+
+C	/tele 1 1646 1683
+C	/ammo0 100
+C	/ammo0 100
+C	/ammo0 100
+C	/ammo0 100
+C	/ammo0 100
+C	/ammo0 100
+
+C	/tele 1 1666 1683
+C	/ammo1 100
+C	/ammo1 100
+C	/ammo1 100
+C	/ammo1 100
+
+C	/tele 1 1686 1683
+C	/ammo2 100
+C	/ammo2 100
+C	/ammo2 100
+C	/ammo2 100
+
+C	/tele 1 1706 1683
+C	/ammo3 100
+C	/ammo3 100
+C	/ammo3 100
+C	/ammo3 100
+
+C	/tele 1 1726 1683
+C	/ammo4 100
+C	/ammo4 100
+C	/ammo4 100
+C	/ammo4 100
+
+C	/tele 1 1746 1683
+C	/tape 5
+C	/tape 5
+C	/tape 5
+C	/tape 5
+
+C	/tele 1 1766 1683
+C	/juice 175
+C	/juice 175
+C	/juice 175
+C	/juice 175
+
+C	/tele 1 1626 1663
+C	/gun1 4
+C	/gun1 4
+C	/gun1 4
+
+C	/gun1 4
+C	/tele 1 1646 1663
+C	/gun2 4
+C	/gun2 4
+C	/gun2 4
+C	/gun2 4
+
+C	/tele 1 1666 1663
+C	/gun3
+C	/gun3
+C	/gun3
+C	/gun3
+
+C	/tele 1 1686 1663
+C	/gun4
+C	/gun4
+C	/gun4
+C	/gun4
+
+C	/tele 1 1706 1663
+C	/gun5 4
+C	/gun5 4
+C	/gun5 4
+C	/gun5 4
+
+C	/tele 1 1726 1663
+C	/gun6
+C	/gun6
+C	/gun6
+C	/gun6
+
+C	/tele 1 1746 1663
+C	/gun7 4
+C	/gun7 4
+C	/gun7 4
+C	/gun7 4
+
+C	/tele 1 1766 1663
+C	/gun8
+C	/gun8
+C	/gun8
+C	/gun8
+
+C	/tele 1 1626 1643
+C	/gun9 4
+C	/gun9 4
+C	/gun9 4
+C	/gun9 4
+
+C	/tele 1 1646 1643
+C	/gun10
+C	/gun10
+C	/gun10
+C	/gun10
+
+C	/tele 1 1666 1643
+C	/gun11 2
+C	/gun11 2
+C	/gun11 2
+C	/gun11 2
+
+C	/tele 1 1686 1643
+C	/gun12 2
+C	/gun12 2
+C	/gun12 2
+C	/gun12 2
+
+C	/tele 1 1706 1643
+C	/gun13
+C	/gun13
+C	/gun13
+C	/gun13
+
+C	/tele 1 1726 1643
+C	/gun14
+C	/gun14
+C	/gun14
+C	/gun14
+
+C	/tele 1 1746 1643
+C	/gun15 2
+C	/gun15 2
+C	/gun15 2
+C	/gun15 2
+
+C	/tele 1 1766 1643
+C	/gun16
+C	/gun16
+C	/gun16
+C	/gun16
+
+C	/tele 1 1786 1643
+C	/gun17
+C	/gun17
+C	/gun17
+C	/gun17
+
+# Teleport players here
+
+C	/tele 2 1626 1683
+C	/tele 3 1626 1683
+C	/tele 4 1626 1683
+C	/tele 5 1626 1683
+
+C	Don't forget the armor
+C	Не забывайте о броне
+
+# Waiting for all players take all items
+D	*
+
+# Teleport players to duel location
+C	/tele 2 2604 2983
+C	/god 2
+C	/tele 3 2918 2983
+C	/god 3
+
+# Kill self and watch the game
+C	/kill 1
+C	/ghost 1
+C	/tele 1 2918 2983
