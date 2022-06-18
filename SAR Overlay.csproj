@@ -6,6 +6,9 @@
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
+    <AssemblyVersion>0.4-beta</AssemblyVersion>
+    <FileVersion>0.4-beta</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Update="Config\Locations.txt">
@@ -28,6 +31,9 @@
   <ItemGroup>
     <Compile Remove="FormRunScenario.xaml.cs" />
     <Page Remove="FormRunScenario.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="FormSelectScenario.xaml.cs">
