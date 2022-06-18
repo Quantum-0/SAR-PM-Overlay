@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +47,8 @@ namespace SAR_Overlay
                 return;
             }
 
+            SAR.ScenarioPaused += SAR_ScenarioPaused;
+
             SAR.SetFocusOnGameWindows();
 
             NativeMethods.RECT rect;
@@ -61,6 +64,16 @@ namespace SAR_Overlay
             dispatcherTimer.Start();
 
             ButtonKill.Visibility = Visibility.Collapsed;
+        }
+
+        private void SAR_ScenarioPaused(object? sender, EventArgs e)
+        {
+            this.Dispatcher.Invoke(() => {
+                ButtonScenario.Click -= ButtonScenario_Click;
+                ButtonScenario.Click += ButtonScenarioResume_Click;
+                ButtonScenario.Visibility = Visibility.Visible;
+                ButtonScenario.Content = "Continue";
+            });
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e) => SAR.SetFocusOnGameWindows();
@@ -96,9 +109,25 @@ namespace SAR_Overlay
             }
         }
 
+        private void ButtonScenarioResume_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonScenario.Click -= ButtonScenarioResume_Click;
+            ButtonScenario.Click += ButtonScenario_Click;
+            SAR.ResumeScenario();
+            ButtonScenario.Content = "Scenario";
+            ButtonScenario.Visibility = Visibility.Collapsed;
+        }
+
         private void ButtonScenario_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
+            var frm = new FormSelectScenario(SAR);
+            frm.ShowDialog();
+            var scenario = frm.Scenario;
+            if (scenario != null)
+            {
+                ButtonScenario.Visibility = Visibility.Collapsed;
+                SAR.RunScenario(scenario);
+            }
         }
 
         private void SliderGasSpeed_DragCompleted(object sender, EventArgs e)
