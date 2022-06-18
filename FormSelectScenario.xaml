@@ -1,0 +1,13 @@
+﻿<Window x:Class="SAR_Overlay.FormSelectScenario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SAR_Overlay"
+        mc:Ignorable="d"
+        Title="Select Scenario" Height="486" Width="246" Topmost="True">
+    <Grid>
+        <ListBox x:Name="ListBoxScenarioSelect" MouseDoubleClick="ListBoxScenarioSelect_MouseDoubleClick" Margin="0,17,0,0"/>
+        <TextBox x:Name="TextBoxFilter" TextWrapping="Wrap" Text="Filter" Foreground="DimGray" Height="17" VerticalAlignment="Top" MouseLeftButtonDown="TextBoxFilter_GotFocus" GotFocus="TextBoxFilter_GotFocus" TextChanged="TextBoxFilter_TextChanged" Margin="0,0,0,0"/>
+    </Grid>
+</Window>
