@@ -15,6 +15,9 @@ namespace SAR_Overlay
         const int delayForChatOpening = 20;
         const int maxChatMessageLength = 70;
         public string? SteamUsername { get; private set; } = null;
+        private bool ScenarioPause = false;
+
+        public event EventHandler<EventArgs> ScenarioPaused;
 
         private SARFacade(IntPtr window_handle)
         {
@@ -71,7 +74,14 @@ namespace SAR_Overlay
             }
             else if (sa is SARScenario.ScenarioActionStartMatch)
                 Start(((SARScenario.ScenarioActionStartMatch)(sa)).bots);
+            else if (sa is SARScenario.ScenarioActionPause)
+            {
+                ScenarioPause = true;
+                ScenarioPaused.Invoke(this, EventArgs.Empty);
+            }
         }
+
+        public void ResumeScenario() => ScenarioPause = false;
 
         public void RunScenario(SARScenario scenario)
         {
@@ -81,7 +91,11 @@ namespace SAR_Overlay
                 foreach (var sa in scenario.Queue)
                 {
                     ExecuteScenarioAction(sa);
-                    Task.Delay(100).Wait();
+                    do
+                    {
+                        Task.Delay(100).Wait();
+                    }
+                    while (ScenarioPause);
                 }
             }).Start();
         }

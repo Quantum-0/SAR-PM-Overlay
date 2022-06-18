@@ -12,6 +12,7 @@ namespace SAR_Overlay
         public struct ScenarioActionKeyboardInput : ScenarioAction { public string keys; }
         public struct ScenarioActionStartMatch : ScenarioAction { public bool bots; }
         public struct ScenarioActionTitle : ScenarioAction { public string title; }
+        public struct ScenarioActionPause : ScenarioAction { };
 
         public List<ScenarioAction> Queue { get; }
         public string Title { get; }
@@ -30,12 +31,15 @@ namespace SAR_Overlay
             foreach (var line in lines)
             {
                 if (line.First() == "D") // Delay
-                    list.Add(new ScenarioActionDelay() { seconds = float.Parse(line[1]) });
+                    if (line[1] == "*") // Until key press
+                        list.Add(new ScenarioActionPause());
+                    else // Timer
+                        list.Add(new ScenarioActionDelay() { seconds = float.Parse(line[1]) });
                 else if (line.First() == "C") // Chat / Command
                     list.Add(new ScenarioActionChatMessage() { text = line[1] });
                 else if (line.First() == "P") // Press key
                     list.Add(new ScenarioActionKeyboardInput() { keys = line[1] });
-                else if (line.First() == "T") // Press key
+                else if (line.First() == "T") // Title
                     title = line[1];
                 else if (line.First() == "S") // Start match
                     list.Add(new ScenarioActionStartMatch() { bots = line[1] == "+" });
