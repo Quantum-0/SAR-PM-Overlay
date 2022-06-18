@@ -15,7 +15,27 @@ It displays bar in the bottom of the screen with buttons. When you click on them
 The list of features available in that overlay:
 - Match ID - *prints current match's ID*
 - Night - *switchs the night*
+- Gas - *turn on/off the gas*
 - Soccer - *creates a soccer ball*
 - Teleport - *teleports you or another player to selected location, which can be choosen from list or on the map*
 - Start match - *starts match with or without bots*
 - Scenarious - *executes described queue of actions*
+- Kill - *kills the player or self if click with right mouse button*
+- Kick - *kicks the player*
+- God - *Enables/disables the god mode for the player or self if click with right mouse button*
+- Ghost - *Enables/disables the ghost mode for the player or self if click with right mouse button*
+- Flight
+- One hits
+
+## People
+
+### Author of the project
+Quantum0 (aka Eat Me OwO in the game)
+
+### Thankies to:
+- Mango - Access to Private Matches
+- Ket_domashniy - Discussing idea, icon
+- Woo - Template of scenario for duel, testing
+- Naxifir - Discussing idea
+- My friends in SAR - Testing
+- Pixile - thankies for that game!
