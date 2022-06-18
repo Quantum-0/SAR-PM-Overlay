@@ -14,6 +14,12 @@
     <None Update="Config\Scenarios\Duel.sarpms">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Config\Scenarios\Duel2vs3ByWoo.sarpms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\Scenarios\DuelWithHostByWoo.sarpms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Map.jpg" />
