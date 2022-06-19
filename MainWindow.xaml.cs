@@ -154,6 +154,13 @@ namespace SAR_Overlay
         private void ButtonSpawn_Click(object sender, RoutedEventArgs e)
         {
             // Open form to select item
+
+            // 1) Category: Weapon, Armor, Utils, Other
+            //      Weapons: see in enums
+            //      Armor: 1-3
+            //      Utils: see in enums
+            //      Other: Juice, Tape, Banana, Hamball?
+            // 3) Rarety or count
         }
 
         private void ButtonOneHits_Click(object sender, RoutedEventArgs e) => SAR.OneHits = !SAR.OneHits;
