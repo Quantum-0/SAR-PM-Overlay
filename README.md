@@ -27,6 +27,62 @@ The list of features available in that overlay:
 - Flight
 - One hits
 
+## Structure of the project
+
+
+
+```mermaid
+flowchart LR
+  User_Interface --> Internal_App_Logic
+  subgraph User_Interface
+    direction TB
+      SFI(SAR Facade Instance)
+      MW(Main Overlay Window)
+      SPW(Select Player Window)
+      STW(Teleport Window)
+      SSW(Select Scenario Window)
+   end
+  subgraph Internal_App_Logic
+    direction TB
+      NM(Native Methods)
+      SAR(SAR Facade EntryPoint)
+      SL(Location Class)
+      SP(Player Class)
+      SE(SAR Enums)
+      SS(Scenario)
+      SC(Commands)
+      SI(Interaction with game)
+      SPr(Properties)
+   end
+   SFI --> MW
+   MW --> SPW
+   MW --> STW
+   MW --> SSW
+
+   SAR --> SL
+   SAR --> SP
+   SAR --> SS
+   SAR --> SC
+   SC --> SI
+   SS --> NM
+   SS --> SC
+   SC --> SE
+   SAR --> SPr
+   SPr --> SI
+   SAR --> NM
+   
+   click MW href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/MainWindow.xaml.cs"
+   click SS href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/SARScenario.cs"
+   click SC href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/SARFacadeCommands.cs"
+   click SI href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/SARFacadeInteractionWithSAR.cs"
+   click SE href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/InGameEntities/SAREnums.cs"
+   click SP href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/InGameEntities/SARPlayer.cs"
+   click SL href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/InGameEntities/SARLocation.cs"
+   click SRp href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/SARFacadeProperties.cs"
+   click NM href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/NativeMethods.cs"
+   click SAR href "https://github.com/Quantum-0/SAR-PM-Overlay/tree/master/SARFacade"
+```
+
 ## People
 
 ### Author of the project
