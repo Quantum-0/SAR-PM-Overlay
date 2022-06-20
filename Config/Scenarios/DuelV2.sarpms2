@@ -1,0 +1,51 @@
+﻿# SAR PRIVATE MATCH SCENARIO
+# Version 2
+
+# Title, Game title, Description, Authors
+TITLE Duel 1x1 V2
+GTITL Duel 1 vs 1
+DESCR Test SARPMO scenario for duel 1x1
+AUTHR Quantum0;Test
+
+# Select 2 players for 2 teams
+TEAMS 1 1 0
+# Select items (class, contains name and command)
+ITEMS
+
+# Setup
+INPUT /allitems
+INPUT /hamballs
+INPUT /emus
+INPUT /day
+
+# Set God-mode for all
+INPUT /god <A>
+INPUT /gasoff
+START NO_BOTS
+INPUT Please jump out as soon as possible
+DELAY 22
+
+# Jump from airplane
+PRESS E
+DELAY 1
+PRESS E
+DELAY 8
+
+# TODO: PLACE WEAPONS HERE
+# tele
+REPEA 4
+PLACE <I1>
+# tele
+REPEA 4
+PLACE <I2>
+
+# Pause untill everybody takes their weapons
+PAUSE
+
+# Teleport everybody to battle location
+INPUT /tele <T1> 2697 2988
+INPUT /tele <T2> 2816 2988
+INPUT /god <A>
+INPUT /kill <T3>
+INPUT /ghost <T3>
+INPUT /tele <T3> 2756 2988
