@@ -159,11 +159,7 @@ namespace SAR_Overlay
                 SAR.ChatInput(FSI.Command);
         }
 
-        private void ButtonSpawn_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        { 
-            if (!string.IsNullOrEmpty(FSI.Command))
-                SAR.ChatInput(FSI.Command);
-        }
+        private void ButtonSpawn_MouseRightButtonDown(object sender, MouseButtonEventArgs e) => SAR.ChatInput(FSI.Command);
 
         private void ButtonOneHits_Click(object sender, RoutedEventArgs e) => SAR.OneHits = !SAR.OneHits;
 

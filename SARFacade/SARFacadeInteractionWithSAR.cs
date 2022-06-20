@@ -14,6 +14,8 @@ namespace SAR_Overlay
 
         public bool ChatInput(string command, bool dontCheckLength = false)
         {
+            if (string.IsNullOrEmpty(command))
+                return false;
             if (!dontCheckLength && command.Length > maxChatMessageLength)
                 throw new ArgumentException();
             Console.WriteLine($"Command: {command}");
