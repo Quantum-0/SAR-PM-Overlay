@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SAR_Overlay"
         mc:Ignorable="d"
-        Title="FormSpawnItem" Height="450" Width="800" Topmost="True">
+        Title="FormSpawnItem" Height="388" Width="571" Topmost="True" MinHeight="300" MinWidth="320">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="Category:" HorizontalAlignment="Stretch" Width="267" Height="26" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="0"/>
-        <ListBox x:Name="ListBoxCategory" Grid.Column="0" Margin="0,26,266,0" Grid.ColumnSpan="2">
+        <ListBox x:Name="ListBoxCategory" Grid.Column="0" Margin="0,26,0,0">
             <ListBoxItem Content="Weapon" Selected="CategorySelected"/>
             <ListBoxItem Content="Ammo" Selected="CategorySelected"/>
             <ListBoxItem Content="Utility" Selected="CategorySelected"/>
