@@ -23,6 +23,7 @@ namespace SAR_Overlay
     {
         SARFacade SAR;
         public const string WINDOW_NAME = "Super Animal Royale";
+        FormSpawnItem FSI = new FormSpawnItem();
         // TODO: Night: Green/Red, Gas: Green/Red
 
         public MainWindow()
@@ -153,14 +154,15 @@ namespace SAR_Overlay
 
         private void ButtonSpawn_Click(object sender, RoutedEventArgs e)
         {
-            // Open form to select item
+            FSI.ShowDialog();
+            if (!string.IsNullOrEmpty(FSI.Command))
+                SAR.ChatInput(FSI.Command);
+        }
 
-            // 1) Category: Weapon, Armor, Utils, Other
-            //      Weapons: see in enums
-            //      Armor: 1-3
-            //      Utils: see in enums
-            //      Other: Juice, Tape, Banana, Hamball?
-            // 3) Rarety or count
+        private void ButtonSpawn_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        { 
+            if (!string.IsNullOrEmpty(FSI.Command))
+                SAR.ChatInput(FSI.Command);
         }
 
         private void ButtonOneHits_Click(object sender, RoutedEventArgs e) => SAR.OneHits = !SAR.OneHits;

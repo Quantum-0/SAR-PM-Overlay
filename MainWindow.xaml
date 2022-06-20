@@ -114,7 +114,7 @@
         <Button x:Name="ButtonSoccer" Content="Soccer" Margin="278,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonSoccer_Click"/>
         <Button x:Name="ButtonTeleport" Content="Teleport" Margin="77,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonTeleport_Click"/>
         <Button x:Name="ButtonGas" Content="Gas" Margin="211,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonGas_Click"/>
-        <Button x:Name="ButtonSpawn" Content="Spawn" Margin="345,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonSpawn_Click" Visibility="Hidden"/>
+        <Button x:Name="ButtonSpawn" Content="Spawn" Margin="345,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonSpawn_Click" MouseRightButtonDown="ButtonSpawn_MouseRightButtonDown"/>
         <Button x:Name="ButtonFlight" Content="Flight" Margin="412,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonFlight_Click"/>
         <Button x:Name="ButtonOneHits" Content="One Hits" Margin="479,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonOneHits_Click"/>
         <Button x:Name="ButtonKill" Content="Kill" Margin="546,10,0,10" HorizontalAlignment="Left" Width="62" Click="ButtonKill_Click" MouseRightButtonDown="ButtonKill_MouseRightButtonDown"/>
