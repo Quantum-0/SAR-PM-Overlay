@@ -17,6 +17,7 @@
         <ListBox x:Name="ListBoxCategory" Grid.Column="0" Margin="0,26,266,0" Grid.ColumnSpan="2">
             <ListBoxItem Content="Weapon" Selected="CategorySelected"/>
             <ListBoxItem Content="Ammo" Selected="CategorySelected"/>
+            <ListBoxItem Content="Utility" Selected="CategorySelected"/>
             <ListBoxItem Content="Armor" Selected="CategorySelected"/>
             <ListBoxItem Content="Other" Selected="CategorySelected"/>
         </ListBox>
@@ -81,7 +82,7 @@
             <Grid Grid.Row="1" x:Name="AmountSelector">
                 <Label Content="Amount:" Height="26" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Label x:Name="LabelAmount" Content="0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Right" FontWeight="Bold" Margin="0,0,10,0"/>
-                <Slider HorizontalAlignment="Stretch" Margin="10,32,10,0" VerticalAlignment="Top"/>
+                <Slider x:Name="SliderAmount" HorizontalAlignment="Stretch" Margin="10,32,10,0" VerticalAlignment="Top" Orientation="Horizontal" SmallChange="1" ValueChanged="SliderAmount_ValueChanged"/>
 
                 <!--
                 <Grid Height="26" Margin="0,51,10,10" Visibility="Hidden">
