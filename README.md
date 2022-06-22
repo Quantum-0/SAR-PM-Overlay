@@ -95,3 +95,6 @@ Quantum0 (aka Eat Me OwO in the game)
 - Naxifir - Discussing idea
 - My friends in SAR - Testing
 - Pixile - thankies for that game!
+- SAR wiki - information about commands and their description, map image
+
+*Materials from [SAR Wiki](https://animalroyale.fandom.com/) is under [CC BY-NC-SA 3.0 license](https://creativecommons.org/licenses/by-nc-sa/3.0/)*
