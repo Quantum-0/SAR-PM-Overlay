@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows;
 
+// Commands' descriptions was copied from https://animalroyale.fandom.com/wiki/Guides/Private_Matches
+// And distributed under CC BY-NC-SA 3.0 license
+
 namespace SAR_Overlay
 {
     public partial class SARFacade
