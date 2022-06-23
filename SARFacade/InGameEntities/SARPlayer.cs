@@ -18,7 +18,7 @@ namespace SAR_Overlay
         /// <summary> "Player is bot" property </summary>
         public bool IsBot { get => String.IsNullOrWhiteSpace(PlayfabID); }
 
-        private SARPlayer(int pID, string name, string playfabID)
+        protected SARPlayer(int pID, string name, string? playfabID)
         {
             this.pID = pID;
             Name = name;
@@ -36,5 +36,31 @@ namespace SAR_Overlay
         public static implicit operator int(SARPlayer p) => p.pID;
 
         public override string ToString() => $"[{pID}] {Name}";
+
+        public SARPlayerWithTeam WithTeam(int team)
+        {
+            var plwt = new SARPlayerWithTeam(this);
+            plwt.Team1 = team == 1;
+            plwt.Team2 = team == 2;
+            plwt.NoTeam = team == 0;
+            return plwt;
+        }
+    }
+
+    public class SARPlayerWithTeam : SARPlayer
+    {
+        public bool Team1 { set; get; } = false;
+        public bool Team2 { set; get; } = false;
+        public bool NoTeam { set; get; } = true;
+
+        private SARPlayerWithTeam(int pID, string name, string playfabID) : base(pID, name, playfabID)
+        {
+
+        }
+
+        public SARPlayerWithTeam(SARPlayer player) : base(player.pID, player.Name, player.PlayfabID)
+        {
+
+        }
     }
 }
