@@ -14,6 +14,9 @@
     <None Update="Config\Locations.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Config\Scenarios\DuelV3.sarpms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Config\Scenarios\Duel - Копировать.sarpms">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
