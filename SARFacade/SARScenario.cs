@@ -16,17 +16,20 @@ namespace SAR_Overlay
 
         public List<ScenarioAction> Queue { get; }
         public string Title { get; }
+        public bool NeedSelectTeams { get; private set; } = false;
 
-        public SARScenario(string title, List<ScenarioAction> queue)
+        public SARScenario(string title, List<ScenarioAction> queue, bool needSelectTeams)
         {
             Queue = queue;
             Title = title;
+            NeedSelectTeams = needSelectTeams;
         }
 
         public new static SARScenario Parse(string str)
         {
             List<ScenarioAction> list = new List<ScenarioAction>();
             string? title = null;
+            var NeedSelectTeams = false;
             var lines = str.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Where(line => !line.StartsWith("#")).Select(line => line.Split('\t'));
             foreach (var line in lines)
             {
@@ -36,7 +39,11 @@ namespace SAR_Overlay
                     else // Timer
                         list.Add(new ScenarioActionDelay() { seconds = float.Parse(line[1]) });
                 else if (line.First() == "C") // Chat / Command
+                {
+                    if (!NeedSelectTeams && (line[1].Contains("<T1>") || line[1].Contains("<T2>") || line[1].Contains("<T0>") || line[1].Contains("<TA>")))
+                        NeedSelectTeams = true;
                     list.Add(new ScenarioActionChatMessage() { text = line[1] });
+                }
                 else if (line.First() == "P") // Press key
                     list.Add(new ScenarioActionKeyboardInput() { keys = line[1] });
                 else if (line.First() == "T") // Title
@@ -53,7 +60,7 @@ namespace SAR_Overlay
                 // TODO: replace <TX> with several commands: <P1> <P2> and etc for all players in current team
                 // TODO: replace <ME> to yours ID
             }
-            return new SARScenario(title ?? "Unnamed scenario", list);
+            return new SARScenario(title ?? "Unnamed scenario", list, NeedSelectTeams);
         }
 
         public override string ToString()

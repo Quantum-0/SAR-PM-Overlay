@@ -62,7 +62,7 @@ namespace SAR_Overlay
             return match.Groups[1].Value;
         }
 
-        private string[] ParseScenarioTemplates(string command, SARPlayer[] playerList)
+        private string[] ParseScenarioTemplates(string command, SARPlayer[] playerList, List<List<SARPlayer>> teams)
         {
             command = command.Replace("<ME>", (this.Me?.pID ?? 1).ToString());
             // .Replace().Replace() ...
@@ -76,15 +76,24 @@ namespace SAR_Overlay
                 foreach (var pl in playerList)
                     if (pl.pID != (Me?.pID ?? 1))
                         ResultCommandsList.Add(command.Replace("<AEM>", pl.pID.ToString()));
+            if (command.Contains("<T0>"))
+                foreach (var pl in teams[0])
+                    ResultCommandsList.Add(command.Replace("<T0>", pl.pID.ToString()));
+            if (command.Contains("<T1>"))
+                foreach (var pl in teams[1])
+                    ResultCommandsList.Add(command.Replace("<T1>", pl.pID.ToString()));
+            if (command.Contains("<T2>"))
+                foreach (var pl in teams[2])
+                    ResultCommandsList.Add(command.Replace("<T2>", pl.pID.ToString()));
             return ResultCommandsList.ToArray();
         }
 
-        private void ExecuteScenarioAction(SARScenario.ScenarioAction sa, SARPlayer[] playerList)
+        private void ExecuteScenarioAction(SARScenario.ScenarioAction sa, SARPlayer[] playerList, List<List<SARPlayer>> teams)
         {   
             if (sa is SARScenario.ScenarioActionChatMessage)
             {
                 var cmdText = ((SARScenario.ScenarioActionChatMessage)(sa)).text;
-                var cmdsList = ParseScenarioTemplates(cmdText, playerList);
+                var cmdsList = ParseScenarioTemplates(cmdText, playerList, teams);
                 foreach (var cmd in cmdsList)
                     ChatInput(cmd);
             }
@@ -110,12 +119,21 @@ namespace SAR_Overlay
         {
             var playerList = GetPlayers();
             var _ = Me;
+            List<List<SARPlayer>> Teams = new List<List<SARPlayer>>();
+            if (scenario.NeedSelectTeams)
+            {
+                var frm = new FormTeamSelect(playerList);
+                frm.ShowDialog();
+                Teams.Add(frm.NoTeam);
+                Teams.Add(frm.Team1);
+                Teams.Add(frm.Team2);
+            }
             new Task(() =>
             {
                 ChatInput(new[] { "SARPMO: Start Scenario {\"}" + scenario.Title + "{\"}" });
                 foreach (var sa in scenario.Queue)
                 {
-                    ExecuteScenarioAction(sa, playerList);
+                    ExecuteScenarioAction(sa, playerList, Teams);
                     do
                     {
                         Task.Delay(100).Wait();
