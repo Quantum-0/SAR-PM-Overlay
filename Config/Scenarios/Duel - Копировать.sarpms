@@ -1,0 +1,8 @@
+﻿# SAR PRIVATE MATCH SCENARIO
+T	TEST TEMPLATES
+
+# Start
+C	/tele <ME> 2400 2400
+C	/god <ALL>
+C	/tele <ALL> 2400 2400
+C	/kill <AEM>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -61,10 +62,32 @@ namespace SAR_Overlay
             return match.Groups[1].Value;
         }
 
-        private void ExecuteScenarioAction(SARScenario.ScenarioAction sa)
+        private string[] ParseScenarioTemplates(string command, SARPlayer[] playerList)
         {
+            command = command.Replace("<ME>", (this.Me?.pID ?? 1).ToString());
+            // .Replace().Replace() ...
+            if (!command.Contains('<') && !command.Contains('>'))
+                return new [] { command };
+            List<string> ResultCommandsList = new List<string>();
+            if (command.Contains("<ALL>"))
+                foreach (var pl in playerList)
+                    ResultCommandsList.Add(command.Replace("<ALL>", pl.pID.ToString()));
+            if (command.Contains("<AEM>"))  // All exclude me
+                foreach (var pl in playerList)
+                    if (pl.pID != (Me?.pID ?? 1))
+                        ResultCommandsList.Add(command.Replace("<AEM>", pl.pID.ToString()));
+            return ResultCommandsList.ToArray();
+        }
+
+        private void ExecuteScenarioAction(SARScenario.ScenarioAction sa, SARPlayer[] playerList)
+        {   
             if (sa is SARScenario.ScenarioActionChatMessage)
-                ChatInput(((SARScenario.ScenarioActionChatMessage)(sa)).text);
+            {
+                var cmdText = ((SARScenario.ScenarioActionChatMessage)(sa)).text;
+                var cmdsList = ParseScenarioTemplates(cmdText, playerList);
+                foreach (var cmd in cmdsList)
+                    ChatInput(cmd);
+            }
             else if (sa is SARScenario.ScenarioActionDelay)
                 Task.Delay(TimeSpan.FromSeconds(((SARScenario.ScenarioActionDelay)(sa)).seconds)).Wait();
             else if (sa is SARScenario.ScenarioActionKeyboardInput)
@@ -85,12 +108,14 @@ namespace SAR_Overlay
 
         public void RunScenario(SARScenario scenario)
         {
+            var playerList = GetPlayers();
+            var _ = Me;
             new Task(() =>
             {
                 ChatInput(new[] { "SARPMO: Start Scenario {\"}" + scenario.Title + "{\"}" });
                 foreach (var sa in scenario.Queue)
                 {
-                    ExecuteScenarioAction(sa);
+                    ExecuteScenarioAction(sa, playerList);
                     do
                     {
                         Task.Delay(100).Wait();
