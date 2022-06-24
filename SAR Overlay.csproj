@@ -14,7 +14,7 @@
     <None Update="Config\Locations.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Config\Scenarios\SBOHFG - Копировать.sarpms">
+    <None Update="Config\Scenarios\Hide-n-Seek.sarpms">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Config\Scenarios\SBOHFG.sarpms">
@@ -24,9 +24,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Config\Scenarios\DuelV3.sarpms">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Config\Scenarios\Duel - Копировать.sarpms">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Config\Scenarios\Duel.sarpms">

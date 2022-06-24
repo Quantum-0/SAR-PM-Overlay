@@ -23,7 +23,21 @@ namespace SAR_Overlay
             if (ChatInput(botsEnabled ? "/start" : "/startp"))
                 started = true;
 
-            ChatInput(new[] { "Welcome to Private Match, controlled by SAR-PMO, made by Eat Me OwO", " {(}aka Quantum0{)}                        Good Luck and Have Fun! UwU" }, true);
+            var glhf = "Good Luck and Have Fun! UwU";
+            if (rnd.Next(15) == 0)
+                glhf = glhf.Replace("Luck", "Lick");
+            if (rnd.Next(10) == 0)
+                glhf = glhf.Replace("Fun", "Fur");
+            if (rnd.Next(25) == 0)
+                glhf = glhf.Replace("Fun", "Sun");
+            if (rnd.Next(7) == 0)
+                glhf = glhf.Replace("UwU", "OwO");
+            if (rnd.Next(6) == 0)
+                glhf = glhf.Replace("UwU", "=w=");
+            if (rnd.Next(3) == 0)
+                glhf = glhf.Replace("UwU", "<3");
+
+            ChatInput(new[] { "Welcome to Private Match, controlled by SAR-PMO, made by Eat Me OwO", " {(}aka Quantum0{)}                        " + glhf }, true);
             return started;
         }
 

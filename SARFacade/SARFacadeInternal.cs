@@ -17,6 +17,7 @@ namespace SAR_Overlay
         const int maxChatMessageLength = 70;
         public string? SteamUsername { get; private set; } = null;
         private bool ScenarioPause = false;
+        private Random rnd = new Random();
 
         public event EventHandler<EventArgs> ScenarioPaused;
 
