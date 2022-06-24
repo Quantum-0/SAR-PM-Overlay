@@ -1,0 +1,27 @@
+﻿# SAR PRIVATE MATCH SCENARIO
+# Scenario is under license CC-BY 3.0
+T	SlowBullets OneHits FastGas
+
+C	/emus
+C	/hamballs
+C	/moles
+C	/bulletspeed 0.5
+C	/gasdmg 3
+C	/gasspeed 2.2
+C	/onehits
+C	/start
+
+D	2
+C	Your bullets are slow
+D	2
+C	But they kill with one hit
+D	2
+C	Beware the gas
+D	2
+C	Run faster a bit
+D	2
+C	Pick up lovely gun
+D	2
+C	Good luck and have fun UwU
+D	2
+C	{(}Scenario by Quantum0, aka Eat Me OwO{)}

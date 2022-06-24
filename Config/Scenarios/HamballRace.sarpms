@@ -1,0 +1,51 @@
+﻿# SAR PRIVATE MATCH SCENARIO
+T	Hamball Race
+
+# Turn of the gas
+C	/gasoff
+
+# Turn off everything in map
+C	/emus
+C	/hamballs
+C	/moles
+C	/day
+C	/allitems
+
+# Start
+C	/startp
+C	/god <ALL>
+C	Welcome to SAR Races!
+D	1
+C	Your goal - ride on a hamball to S.A.W. labs
+D	1
+C	Please jump from airplane as soon as possible
+D	1
+C	Broken hammball = lose
+D	19
+
+P	e
+D	1
+P	e
+D	8
+
+C	/tele <ME> 3309 785
+C	/hamball
+C	/tele <ME> 3309 770
+C	/hamball
+C	/tele <ME> 3309 750
+C	/hamball
+
+C	/tele <T1> 3280 770
+C	Sit on your hamball and run when night becomes
+C	/tele <T0> 3385 800
+C	/kill <T0>
+C	/ghost <T0>
+D	10
+C	/god <T1>
+C	3
+D	1
+C	2
+D	1
+C	1
+D	1
+C	/night

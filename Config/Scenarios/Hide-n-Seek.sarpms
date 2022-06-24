@@ -1,0 +1,32 @@
+﻿# SAR PRIVATE MATCH SCENARIO
+T	Hide-and-Seek
+
+C	/bulletspeed 2
+C	/gasdmg 5
+C	/gasspeed 1.2
+C	/onehits
+C	/startp
+
+C	/tele <T1> 3386 1974
+C	/tele <T2> 3470 1974
+C	/tele <ME> 3428 1974
+
+C	Team 1 {(}Cats{)} is immortal and have to kill Team 2
+C	Team 2 {(}Mice{)} have to survive for 3.5 minutes
+D	2
+C	Mice don't need any weapon and don't need to kill anyone
+C	Cats cat catch mouse with only one hit
+D	2
+C	Game scenario by Quantum0 {(}aka Eat Me OwO{)}
+C	/god <T1>
+C	/kill <T0>
+C	/ghost <T0>
+D	20
+C	/gasstart
+
+D	215
+
+# Calculate here alive???
+# If players count == LEN(T1) -> team1 win, else team2 win
+# C	/getplayers
+C	/kill <T1>
