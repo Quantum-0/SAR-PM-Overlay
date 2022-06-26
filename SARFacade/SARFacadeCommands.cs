@@ -37,7 +37,7 @@ namespace SAR_Overlay
             if (rnd.Next(3) == 0)
                 glhf = glhf.Replace("UwU", "<3");
 
-            ChatInput(new[] { "Welcome to Private Match, controlled by SAR-PMO, made by Eat Me OwO", " {(}aka Quantum0{)}                        " + glhf }, true);
+            ChatInput(new[] { "Welcome to Private Match, controlled by SAR-PMO, made by Quantum0", glhf }, true);
             return started;
         }
 
