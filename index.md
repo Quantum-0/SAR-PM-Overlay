@@ -1,37 +1,100 @@
-## Welcome to GitHub Pages
+# SAR-PM-Overlay
 
-You can use the [editor on GitHub](https://github.com/Quantum-0/SAR-PM-Overlay/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This project is a game overlay for [Super Animal Royale](https://animalroyale.com/) provides UI for moders/private match hosters.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+It displays bar in the bottom of the screen with buttons. When you click on them, tool set focus on game window and input commands via chat simulating user input.
 
-### Markdown
+[![wakatime](https://wakatime.com/badge/user/7c9029ee-89d1-45a3-8197-cbf6c3bcaf78/project/f55f187d-9c69-43cb-b40c-baa66fc0e648.svg)](https://wakatime.com/badge/user/7c9029ee-89d1-45a3-8197-cbf6c3bcaf78/project/f55f187d-9c69-43cb-b40c-baa66fc0e648)
+[![Lint Code Base](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/lint.yml/badge.svg)](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/lint.yml)
+[![Build .NET Desktop](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/build.yml/badge.svg)](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/build.yml)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+![Screenshot](Resources/Screenshot1.jpg)
 
-```markdown
-Syntax highlighted code block
+## Features
 
-# Header 1
-## Header 2
-### Header 3
+The list of features available in that overlay:
+- Match ID - *prints current match's ID*
+- Night - *switchs the night*
+- Gas - *turn on/off the gas*
+- Soccer - *creates a soccer ball*
+- Teleport - *teleports you or another player to selected location, which can be choosen from list or on the map*
+- Start match - *starts match with or without bots*
+- Scenarious - *executes described queue of actions*
+- Kill - *kills the player or self if click with right mouse button*
+- Kick - *kicks the player*
+- God - *Enables/disables the god mode for the player or self if click with right mouse button*
+- Ghost - *Enables/disables the ghost mode for the player or self if click with right mouse button*
+- Flight
+- One hits
 
-- Bulleted
-- List
+## Structure of the project
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
+```mermaid
+flowchart LR
+  User_Interface --> Internal_App_Logic
+  subgraph User_Interface
+    direction TB
+      SFI(SAR Facade Instance)
+      MW(Main Overlay Window)
+      SPW(Select Player Window)
+      STW(Teleport Window)
+      SSW(Select Scenario Window)
+   end
+  subgraph Internal_App_Logic
+    direction TB
+      NM(Native Methods)
+      SAR(SAR Facade EntryPoint)
+      SL(Location Class)
+      SP(Player Class)
+      SE(SAR Enums)
+      SS(Scenario)
+      SC(Commands)
+      SI(Interaction with game)
+      SPr(Properties)
+   end
+   SFI --> MW
+   MW --> SPW
+   MW --> STW
+   MW --> SSW
+
+   SAR --> SL
+   SAR --> SP
+   SAR --> SS
+   SAR --> SC
+   SC --> SI
+   SS --> NM
+   SS --> SC
+   SC --> SE
+   SAR --> SPr
+   SPr --> SI
+   SAR --> NM
+   
+   click MW href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/MainWindow.xaml.cs"
+   click SS href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/SARScenario.cs"
+   click SC href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/SARFacadeCommands.cs"
+   click SI href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/SARFacadeInteractionWithSAR.cs"
+   click SE href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/InGameEntities/SAREnums.cs"
+   click SP href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/InGameEntities/SARPlayer.cs"
+   click SL href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/InGameEntities/SARLocation.cs"
+   click SRp href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/SARFacadeProperties.cs"
+   click NM href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/NativeMethods.cs"
+   click SAR href "https://github.com/Quantum-0/SAR-PM-Overlay/tree/master/SARFacade"
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+## People
 
-### Jekyll Themes
+### Author of the project
+Quantum0 (aka Eat Me OwO in the game)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Quantum-0/SAR-PM-Overlay/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Thankies to:
+- Mango - Access to Private Matches
+- Ket_domashniy - Discussing idea, icon
+- Woo - Template of scenario for duel, testing
+- Naxifir - Discussing idea
+- My friends in SAR - Testing
+- Pixile - thankies for that game!
+- SAR wiki - information about commands and their description, map image
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+*Materials from [SAR Wiki](https://animalroyale.fandom.com/) is under [CC BY-NC-SA 3.0 license](https://creativecommons.org/licenses/by-nc-sa/3.0/)*
