@@ -106,7 +106,10 @@ namespace SAR_Overlay
                 SliderGasSpeed.Visibility = Visibility.Collapsed;
                 ButtonFlight.Visibility = Visibility.Collapsed;
 
+                ButtonSite.Visibility = Visibility.Visible;
+                ButtonReload.Visibility = Visibility.Visible;
                 ButtonKill.Visibility = Visibility.Visible;
+                ButtonSpawn.Visibility = Visibility.Visible;
             }
         }
 
@@ -136,7 +139,10 @@ namespace SAR_Overlay
                 SliderGasSpeed.Visibility = Visibility.Collapsed;
                 ButtonFlight.Visibility = Visibility.Collapsed;
 
+                ButtonSite.Visibility = Visibility.Visible;
+                ButtonReload.Visibility = Visibility.Visible;
                 ButtonKill.Visibility = Visibility.Visible;
+                ButtonSpawn.Visibility = Visibility.Visible;
             }
         }
 
@@ -180,5 +186,12 @@ namespace SAR_Overlay
         private void ButtonGhost_MouseRightButtonDown(object sender, MouseButtonEventArgs e) => SAR.Ghost(SAR.Me);
 
         private void ButtonKill_MouseRightButtonDown(object sender, MouseButtonEventArgs e) => SAR.Kill(SAR.Me);
+
+        private void ButtonSite_Click(object sender, RoutedEventArgs e) => System.Diagnostics.Process.Start("http://sarpmo.quantum0.ru");
+
+        private void ButtonReload_Click(object sender, RoutedEventArgs e)
+        {
+            // Reset all, must be clicked when match finished
+        }
     }
 }

@@ -103,6 +103,9 @@
         <Button x:Name="ButtonStart" Content="Start" Margin="0,10,77,10" Background="#FF2B7435" HorizontalAlignment="Right" Width="62" Click="ButtonStart_Click" Grid.Column="2"/>
         <Button x:Name="ButtonScenario" Content="Scenario" Margin="0,10,144,10" HorizontalAlignment="Right" Width="62" Click="ButtonScenario_Click" Grid.Column="2" Background="#FF1D527B"/>
 
+        <Button x:Name="ButtonReload" Visibility="Hidden" Content="Reload" Margin="0,10,144,10" Background="#FF8E702D" HorizontalAlignment="Right" Width="62" Click="ButtonReload_Click" Grid.Column="2"/>
+        <Button x:Name="ButtonSite" Visibility="Hidden" Content="Site" Margin="0,10,77,10" HorizontalAlignment="Right" Width="62" Click="ButtonSite_Click" Grid.Column="2" Background="#FF562D80"/>
+        
         <CheckBox x:Name="CheckBoxAddBots" Content="Add Bots" HorizontalAlignment="Right" Margin="0,0,10,12" FontWeight="Bold" Foreground="White" Grid.Column="1" Width="72" Height="16" VerticalAlignment="Bottom"/>
         <Slider x:Name="SliderGasSpeed" HorizontalAlignment="Left" Margin="88,0,0,11" VerticalAlignment="Bottom" Width="84" Grid.Column="1" Height="18" Thumb.DragCompleted="SliderGasSpeed_DragCompleted" Value="1" Minimum="0.4" Maximum="3"/>
         <Slider x:Name="SliderGasDamage" HorizontalAlignment="Left" Margin="261,0,0,11" Width="84" Height="18" VerticalAlignment="Bottom" Grid.Column="1" Thumb.DragCompleted="SliderGasDamage_DragCompleted" Minimum="1" Value="1"/>
