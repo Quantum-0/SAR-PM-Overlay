@@ -1,6 +1,6 @@
 This project is a game overlay for [Super Animal Royale](https://animalroyale.com/) provides UI for moders/private match hosters.
 
-It displays bar in the bottom of the screen with buttons. When you click on them, tool set focus on game window and input commands via chat simulating user input.
+It displays bar in the bottom of the screen with buttons. When you click on them, application sets focus on game window and input commands via chat simulating user input.
 
 # Demo
 
