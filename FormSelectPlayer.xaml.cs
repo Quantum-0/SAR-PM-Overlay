@@ -47,7 +47,8 @@ namespace SAR_Overlay
 
         private void TextBoxFilter_GotFocus(object sender, EventArgs e)
         {
-            TextBoxFilter.SelectAll();
+            if (TextBoxFilter.Text == "Filter")
+                TextBoxFilter.Clear();
         }
 
         private void TextBoxFilter_TextChanged(object sender, TextChangedEventArgs e)
