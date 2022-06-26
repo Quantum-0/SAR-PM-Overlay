@@ -37,7 +37,7 @@ You can **download latest release** [here](https://github.com/Quantum-0/SAR-PM-O
 
 I hope interface is friendly for user and don't need an explanation. 
 
-The only non-obvious thing is that right-clicking on the [Kill] [God] [Ghost] buttons applies the command to itself, and for the [Spawn] button - executes the same command that was called the last time when selecting item.
+The only non-obvious thing is that right-clicking on the [Kill] [God] [Ghost] buttons applies the command to self, and for the [Spawn] button - executes the same command that was called the last time when selecting item.
 
 ## Features
 
