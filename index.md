@@ -4,11 +4,32 @@ This project is a game overlay for [Super Animal Royale](https://animalroyale.co
 
 It displays bar in the bottom of the screen with buttons. When you click on them, tool set focus on game window and input commands via chat simulating user input.
 
-[![wakatime](https://wakatime.com/badge/user/7c9029ee-89d1-45a3-8197-cbf6c3bcaf78/project/f55f187d-9c69-43cb-b40c-baa66fc0e648.svg)](https://wakatime.com/badge/user/7c9029ee-89d1-45a3-8197-cbf6c3bcaf78/project/f55f187d-9c69-43cb-b40c-baa66fc0e648)
-[![Lint Code Base](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/lint.yml/badge.svg)](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/lint.yml)
-[![Build .NET Desktop](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/build.yml/badge.svg)](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/build.yml)
+# Downloads
 
-![Screenshot](Resources/Screenshot1.jpg)
+You can download latest release [here](https://github.com/Quantum-0/SAR-PM-Overlay/releases)
+
+# Demo
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/ZToDhgTsnXM" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
+
+# Instalation and running
+
+- Install .NET 5.0 for Desktop
+- Download latest release from this repository
+- Open the game
+- Run that application
+- Start private match
+- Enjoy!
+
+## Usage
+
+I hope interface is friendly for user and don't need an explanation. 
+
+The only non-obvious thing is that right-clicking on the [Kill] [God] [Ghost] buttons applies the command to itself, and for the [Spawn] button - executes the same command that was called the last time when selecting item.
 
 ## Features
 
@@ -24,77 +45,21 @@ The list of features available in that overlay:
 - Kick - *kicks the player*
 - God - *Enables/disables the god mode for the player or self if click with right mouse button*
 - Ghost - *Enables/disables the ghost mode for the player or self if click with right mouse button*
-- Flight
-- One hits
-
-## Structure of the project
-
-
-
-```mermaid
-flowchart LR
-  User_Interface --> Internal_App_Logic
-  subgraph User_Interface
-    direction TB
-      SFI(SAR Facade Instance)
-      MW(Main Overlay Window)
-      SPW(Select Player Window)
-      STW(Teleport Window)
-      SSW(Select Scenario Window)
-   end
-  subgraph Internal_App_Logic
-    direction TB
-      NM(Native Methods)
-      SAR(SAR Facade EntryPoint)
-      SL(Location Class)
-      SP(Player Class)
-      SE(SAR Enums)
-      SS(Scenario)
-      SC(Commands)
-      SI(Interaction with game)
-      SPr(Properties)
-   end
-   SFI --> MW
-   MW --> SPW
-   MW --> STW
-   MW --> SSW
-
-   SAR --> SL
-   SAR --> SP
-   SAR --> SS
-   SAR --> SC
-   SC --> SI
-   SS --> NM
-   SS --> SC
-   SC --> SE
-   SAR --> SPr
-   SPr --> SI
-   SAR --> NM
-   
-   click MW href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/MainWindow.xaml.cs"
-   click SS href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/SARScenario.cs"
-   click SC href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/SARFacadeCommands.cs"
-   click SI href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/SARFacadeInteractionWithSAR.cs"
-   click SE href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/InGameEntities/SAREnums.cs"
-   click SP href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/InGameEntities/SARPlayer.cs"
-   click SL href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/InGameEntities/SARLocation.cs"
-   click SRp href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/SARFacade/SARFacadeProperties.cs"
-   click NM href "https://github.com/Quantum-0/SAR-PM-Overlay/blob/master/NativeMethods.cs"
-   click SAR href "https://github.com/Quantum-0/SAR-PM-Overlay/tree/master/SARFacade"
-```
-
-## People
+- Flight - *Change flight direction*
+- One hits - *one-hits mode*
 
 ### Author of the project
-Quantum0 (aka Eat Me OwO in the game)
 
-### Thankies to:
+- Quantum0#5655 in Discord / Quantum0 in Telegram
+
+### Thankies to
+
 - Mango - Access to Private Matches
 - Ket_domashniy - Discussing idea, icon
 - Woo - Template of scenario for duel, testing
 - Naxifir - Discussing idea
 - My friends in SAR - Testing
-- Pixile - thankies for that game!
-- SAR wiki - information about commands and their description, map image
+- Pixile - Thankies for that game!
+- SAR wiki - Information about commands and their description, map image
 
 *Materials from [SAR Wiki](https://animalroyale.fandom.com/) is under [CC BY-NC-SA 3.0 license](https://creativecommons.org/licenses/by-nc-sa/3.0/)*
