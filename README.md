@@ -9,7 +9,34 @@ It displays bar in the bottom of the screen with buttons. When you click on them
 [![Build .NET Desktop](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/build.yml/badge.svg)](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/build.yml)
 [![pages-build-deployment](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/pages/pages-build-deployment)
 
+# Screenshot
+
 ![Screenshot](Resources/Screenshot1.jpg)
+
+# Who can uses it
+
+To use that software you **must have access** to private matches (or to be a moder).
+
+If you **have not access** to private matches in game, that software is useless for you.
+
+# Is that cheating?
+
+No, it isn't. That software doesn't use any kinds of exploits, but just emulates user input, that's not prohibited. More than that, the game allows you to use these commands only if you are owner of the match.
+
+# Instalation and running
+
+- Install .NET 5.0 for Desktop
+- Download latest release from this repository
+- Open the game
+- Run that application
+- Start private match
+- Enjoy!
+
+## Usage
+
+I hope interface is friendly for user and don't need an explanation. 
+
+The only non-obvious thing is that right-clicking on the [Kill] [God] [Ghost] buttons applies the command to itself, and for the [Spawn] button - executes the same command that was called the last time when selecting item.
 
 ## Features
 
@@ -25,12 +52,10 @@ The list of features available in that overlay:
 - Kick - *kicks the player*
 - God - *Enables/disables the god mode for the player or self if click with right mouse button*
 - Ghost - *Enables/disables the ghost mode for the player or self if click with right mouse button*
-- Flight
-- One hits
+- Flight - *Change flight direction*
+- One hits - *one-hits mode*
 
 ## Structure of the project
-
-
 
 ```mermaid
 flowchart LR
@@ -84,18 +109,43 @@ flowchart LR
    click SAR href "https://github.com/Quantum-0/SAR-PM-Overlay/tree/master/SARFacade"
 ```
 
+## About Scenarios
+
+Scenario is a queue of actions save in file .sarpms (SAR Private Match Scenario)
+Syntax:
+- Char # in the begining of the line - comment, line will be ignored
+- Empty lines are also ignores
+- Other lines interprets as **actions**
+- Action contains **type** and **parameters** divided with tabulation symbol
+- Types and parameters:
+  - D - Delay
+    - Parameter is a number of seconds or * for wait for pressing [Continue] button
+  - C - Chat or command
+    - Parameter is just a string which will be entered in game chat
+  - P - Press a key
+    - Parameter is a key
+  - T - Title of scenario
+  - S - Start the match
+    - Parameter + turn on bots
+- You can use templates in actions
+- Available templates:
+  - <ALL> - action will be applied for all players
+  - <ME> - for current user
+  - <AEM> - All Exclude Me - for all players exclude current
+  - <T0> - No Team, <T1> and <T2> - Team 1 and Team 2
+
 ## People
 
 ### Author of the project
 Quantum0 (aka Eat Me OwO in the game)
 
-### Thankies to:
+### Thankies to
 - Mango - Access to Private Matches
 - Ket_domashniy - Discussing idea, icon
 - Woo - Template of scenario for duel, testing
 - Naxifir - Discussing idea
 - My friends in SAR - Testing
-- Pixile - thankies for that game!
-- SAR wiki - information about commands and their description, map image
+- Pixile - Thankies for that game!
+- SAR wiki - Information about commands and their description, map image
 
 *Materials from [SAR Wiki](https://animalroyale.fandom.com/) is under [CC BY-NC-SA 3.0 license](https://creativecommons.org/licenses/by-nc-sa/3.0/)*
