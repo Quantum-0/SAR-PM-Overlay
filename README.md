@@ -9,7 +9,31 @@ It displays bar in the bottom of the screen with buttons. When you click on them
 [![Build .NET Desktop](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/build.yml/badge.svg)](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/build.yml)
 [![pages-build-deployment](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/pages/pages-build-deployment)
 
+# Demo
+
 ![Screenshot](Resources/Screenshot1.jpg)
+<!--
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/ZToDhgTsnXM" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
+-->
+
+# Instalation and running
+
+- Install .NET 5.0 for Desktop
+- Download latest release from this repository
+- Open the game
+- Run that application
+- Start private match
+- Enjoy!
+
+## Usage
+
+I hope interface is friendly for user and don't need an explanation. 
+
+The only non-obvious thing is that right-clicking on the [Kill] [God] [Ghost] buttons applies the command to itself, and for the [Spawn] button - executes the same command that was called the last time when selecting item.
 
 ## Features
 
@@ -25,12 +49,10 @@ The list of features available in that overlay:
 - Kick - *kicks the player*
 - God - *Enables/disables the god mode for the player or self if click with right mouse button*
 - Ghost - *Enables/disables the ghost mode for the player or self if click with right mouse button*
-- Flight
-- One hits
+- Flight - *Change flight direction*
+- One hits - *one-hits mode*
 
 ## Structure of the project
-
-
 
 ```mermaid
 flowchart LR
