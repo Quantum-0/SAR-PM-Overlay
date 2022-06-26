@@ -1,1 +1,5 @@
 theme: jekyll-theme-slate
+title: SAR Private Matches Overlay
+description: Overlay for Super Animal Royale provides interface for chat commands
+show_downloads: true
+# google_analytics: [Your Google Analytics tracking ID]
