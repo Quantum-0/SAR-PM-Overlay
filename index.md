@@ -4,7 +4,7 @@ It displays bar in the bottom of the screen with buttons. When you click on them
 
 # Download
 
-You can **download latest release** [here](https://github.com/Quantum-0/SAR-PM-Overlay/releases)
+You can **download latest release** [here](https://github.com/Quantum-0/SAR-PM-Overlay/releases/latest)
 
 # Demo
 
