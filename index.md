@@ -1,12 +1,10 @@
-# SAR-PM-Overlay
-
 This project is a game overlay for [Super Animal Royale](https://animalroyale.com/) provides UI for moders/private match hosters.
 
 It displays bar in the bottom of the screen with buttons. When you click on them, tool set focus on game window and input commands via chat simulating user input.
 
-# Downloads
+# Download
 
-You can download latest release [here](https://github.com/Quantum-0/SAR-PM-Overlay/releases)
+You can **download latest release** [here](https://github.com/Quantum-0/SAR-PM-Overlay/releases)
 
 # Demo
 
