@@ -18,7 +18,7 @@ C	/god 4
 C	/god 5
 
 # Start match
-C	/startp
+S	-
 C	/gasoff
 
 C	EN: Please jump out as soon as the match starts

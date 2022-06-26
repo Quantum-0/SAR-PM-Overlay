@@ -11,7 +11,7 @@ C	/moles
 C	/allitems
 
 # Start
-C	/startp
+S	-
 D	2
 C	Please jump from airplane as soon as possible
 D	20
