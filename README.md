@@ -9,16 +9,9 @@ It displays bar in the bottom of the screen with buttons. When you click on them
 [![Build .NET Desktop](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/build.yml/badge.svg)](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/build.yml)
 [![pages-build-deployment](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/Quantum-0/SAR-PM-Overlay/actions/workflows/pages/pages-build-deployment)
 
-# Demo
+# Screenshot
 
 ![Screenshot](Resources/Screenshot1.jpg)
-<!--
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/ZToDhgTsnXM" 
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
--->
 
 # Instalation and running
 
@@ -117,7 +110,7 @@ Quantum0 (aka Eat Me OwO in the game)
 - Woo - Template of scenario for duel, testing
 - Naxifir - Discussing idea
 - My friends in SAR - Testing
-- Pixile - thankies for that game!
-- SAR wiki - information about commands and their description, map image
+- Pixile - Thankies for that game!
+- SAR wiki - Information about commands and their description, map image
 
 *Materials from [SAR Wiki](https://animalroyale.fandom.com/) is under [CC BY-NC-SA 3.0 license](https://creativecommons.org/licenses/by-nc-sa/3.0/)*
