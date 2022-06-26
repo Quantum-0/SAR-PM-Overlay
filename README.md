@@ -99,6 +99,31 @@ flowchart LR
    click SAR href "https://github.com/Quantum-0/SAR-PM-Overlay/tree/master/SARFacade"
 ```
 
+## About Scenarios
+
+Scenario is a queue of actions save in file .sarpms (SAR Private Match Scenario)
+Syntax:
+- Char # in the begining of the line - comment, line will be ignored
+- Empty lines are also ignores
+- Other lines interprets as **actions**
+- Action contains **type** and **parameters** divided with tabulation symbol
+- Types and parameters:
+  - D - Delay
+    - Parameter is a number of seconds or * for wait for pressing [Continue] button
+  - C - Chat or command
+    - Parameter is just a string which will be entered in game chat
+  - P - Press a key
+    - Parameter is a key
+  - T - Title of scenario
+  - S - Start the match
+    - Parameter + turn on bots
+- You can use templates in actions
+- Available templates:
+  - <ALL> - action will be applied for all players
+  - <ME> - for current user
+  - <AEM> - All Exclude Me - for all players exclude current
+  - <T0> - No Team, <T1> and <T2> - Team 1 and Team 2
+
 ## People
 
 ### Author of the project
