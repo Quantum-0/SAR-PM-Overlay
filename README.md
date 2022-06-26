@@ -89,7 +89,7 @@ flowchart LR
 ### Author of the project
 Quantum0 (aka Eat Me OwO in the game)
 
-### Thankies to:
+### Thankies to
 - Mango - Access to Private Matches
 - Ket_domashniy - Discussing idea, icon
 - Woo - Template of scenario for duel, testing
