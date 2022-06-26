@@ -13,6 +13,16 @@ It displays bar in the bottom of the screen with buttons. When you click on them
 
 ![Screenshot](Resources/Screenshot1.jpg)
 
+# Who can uses it
+
+To use that software you **must have access** to private matches (or to be a moder).
+
+If you **have not access** to private matches in game, that software is useless for you.
+
+# Is that cheating?
+
+No, it isn't. That software doesn't use any kinds of exploits, but just emulates user input, that's not prohibited. More than that, the game allows you to use these commands only if you are owner of the match.
+
 # Instalation and running
 
 - Install .NET 5.0 for Desktop
