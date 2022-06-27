@@ -12,7 +12,7 @@ C	/day
 C	/allitems
 
 # Start
-S	-
+C	/startp
 C	/god <ALL>
 C	Welcome to SAR Races!
 D	1

@@ -5,7 +5,7 @@ C	/bulletspeed 2
 C	/gasdmg 5
 C	/gasspeed 1.2
 C	/onehits
-S	-
+C	/startp
 
 C	/tele <T1> 3386 1974
 C	/tele <T2> 3470 1974

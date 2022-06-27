@@ -9,7 +9,7 @@ C	/bulletspeed 0.5
 C	/gasdmg 3
 C	/gasspeed 2.2
 C	/onehits
-S	+
+C	/start
 
 D	2
 C	Your bullets are slow
