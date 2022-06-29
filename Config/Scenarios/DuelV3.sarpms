@@ -14,24 +14,19 @@ C	/allitems
 C	/startp
 D	2
 C	Please jump from airplane as soon as possible
-D	20
-
-# God for all
 C	/god <ALL>
+D	20
 
 # Jump from airplane
 P	e
 D	1
 P	e
-D	8
+D	7
 
 # Fill inventory to now auto collect them
 C	/tele <ME> 510 305
-C	/ammo0 100
-C	/ammo1 100
-C	/ammo2 100
-C	/ammo3 100
-C	/ammo4 100
+R	5
+C	/ammo<RI> 100
 C	/banana 10
 C	/tape 5
 C	/juice 200
@@ -40,165 +35,111 @@ D	1
 # Put items
 
 C	/tele <ME> 758 769
-C	/gun0 4
-C	/gun0 4
-C	/gun0 4
+R	<PC>
 C	/gun0 4
 
 C	/tele <ME> 783 769
-C	/gun1 4
-C	/gun1 4
-C	/gun1 4
+R	<PC>
 C	/gun1 4
 
 C	/tele <ME> 808 769
-C	/gun2 4
-C	/gun2 4
-C	/gun2 4
+R	<PC>
 C	/gun2 4
 
 C	/tele <ME> 758 745
-C	/gun3 4
-C	/gun3 4
-C	/gun3 4
+R	<PC>
 C	/gun3 4
 
 C	/tele <ME> 783 745
-C	/gun4 4
-C	/gun4 4
-C	/gun4 4
+R	<PC>
 C	/gun4 4
 
 C	/tele <ME> 808 745
-C	/gun5 4
-C	/gun5 4
-C	/gun5 4
+R	<PC>
 C	/gun5 4
 
 C	/tele <ME> 808 719
-C	/juice 200
-C	/juice 200
-C	/juice 200
+R	<PC>
 C	/juice 200
 
 C	/tele <ME> 808 695
-C	/tape 5
-C	/tape 5
-C	/tape 5
+R	<PC>
 C	/tape 5
 
 C	/tele <ME> 837 769
-C	/gun6 4
-C	/gun6 4
-C	/gun6 4
+R	<PC>
 C	/gun6 4
 
 C	/tele <ME> 837 745
-C	/gun9 4
-C	/gun9 4
-C	/gun9 4
+R	<PC>
 C	/gun9 4
 
 C	/tele <ME> 861 769
-C	/gun7 4
-C	/gun7 4
-C	/gun7 4
+R	<PC>
 C	/gun7 4
 
 C	/tele <ME> 888 769
-C	/gun8 4
-C	/gun8 4
-C	/gun8 4
+R	<PC>
 C	/gun8 4
 
 C	/tele <ME> 861 719
-C	/gun10 4
-C	/gun10 4
-C	/gun10 4
+R	<PC>
 C	/gun10 4
 
 C	/tele <ME> 888 745
-C	/gun11 4
-C	/gun11 4
-C	/gun11 4
+R	<PC>
 C	/gun11 4
 
 C	/tele <ME> 861 745
-C	/gun12 4
-C	/gun12 4
-C	/gun12 4
+R	<PC>
 C	/gun12 4
 
 C	/tele <ME> 861 695
-C	/gun13 4
-C	/gun13 4
-C	/gun13 4
+R	<PC>
 C	/gun13 4
 
 C	/tele <ME> 888 719
-C	/gun14 4
-C	/gun14 4
-C	/gun14 4
+R	<PC>
 C	/gun14 4
 
 C	/tele <ME> 888 695
-C	/gun15 4
-C	/gun15 4
-C	/gun15 4
+R	<PC>
 C	/gun15 4
 
 C	/tele <ME> 919 709
-C	/gun16 4
-C	/gun16 4
-C	/gun16 4
+R	<PC>
 C	/gun16 4
 
 C	/tele <ME> 919 759
-C	/gun17 4
-C	/gun17 4
-C	/gun17 4
+R	<PC>
 C	/gun17 4
 
 C	/tele <ME> 837 719
-C	/armor3
-C	/armor3
-C	/armor3
+R	<PC>
 C	/armor3
 
 C	/tele <ME> 837 695
-C	/banana 10
-C	/banana 10
-C	/banana 10
+R	<PC>
 C	/banana 10
 
 C	/tele <ME> 958 769
-C	/ammo0 100
-C	/ammo0 100
-C	/ammo0 100
+R	<PC>
 C	/ammo0 100
 
 C	/tele <ME> 958 745
-C	/ammo1 100
-C	/ammo1 100
-C	/ammo1 100
+R	<PC>
 C	/ammo1 100
 
 C	/tele <ME> 958 719
-C	/ammo2 100
-C	/ammo2 100
-C	/ammo2 100
+R	<PC>
 C	/ammo2 100
 
 C	/tele <ME> 958 695
-C	/ammo3 100
-C	/ammo3 100
-C	/ammo3 100
+R	<PC>
 C	/ammo3 100
 
 C	/tele <ME> 919 734
-C	/ammo4 100
-C	/ammo4 100
-C	/ammo4 100
+R	<PC>
 C	/ammo4 100
 
 
