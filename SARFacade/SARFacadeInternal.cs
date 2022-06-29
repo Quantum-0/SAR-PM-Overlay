@@ -65,10 +65,10 @@ namespace SAR_Overlay
 
         private string[] ParseScenarioTemplates(string command, SARPlayer[] playerList, List<List<SARPlayer>> teams, int repeatIndex)
         {
-            command = command.Replace("<ME>", (this.Me?.pID ?? 1).ToString());
-            command = command.Replace("<PC>", playerList.Length.ToString());
-            command = command.Replace("<RI>", repeatIndex.ToString());
-            // .Replace().Replace() ...
+            command = command.Replace("<ME>", (this.Me?.pID ?? 1).ToString())
+                .Replace("<PC>", playerList.Length.ToString())
+                .Replace("<RI>", repeatIndex.ToString());
+
             if (!command.Contains('<') && !command.Contains('>'))
                 return new [] { command };
             List<string> ResultCommandsList = new List<string>();
@@ -88,6 +88,12 @@ namespace SAR_Overlay
             if (command.Contains("<T2>"))
                 foreach (var pl in teams[2])
                     ResultCommandsList.Add(command.Replace("<T2>", pl.pID.ToString()));
+            if (command.Contains("<RNDLOC>"))
+            {
+                var index = rnd.Next(Config.TeleportLocations.Length);
+                var loc = Config.TeleportLocations[index];
+                command = command.Replace("<RNDLOC>", $"{loc.Coords.X} {loc.Coords.Y}");
+            }
             return ResultCommandsList.ToArray();
         }
 
