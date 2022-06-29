@@ -45,6 +45,9 @@ namespace SAR_Overlay
                 case "Hamball":
                     AmountSelector.Visibility = Visibility.Collapsed;
                     break;
+                case "Emu":
+                    AmountSelector.Visibility = Visibility.Collapsed;
+                    break;
                 case "Banana":
                     SliderAmount.Maximum = 10;
                     break;
@@ -101,6 +104,9 @@ namespace SAR_Overlay
                     lbi = new ListBoxItem() { Content = "Hamball" };
                     lbi.Selected += OtherItemSelected;
                     ListBoxSelectItem.Items.Add(lbi);
+                    lbi = new ListBoxItem() { Content = "Emu" };
+                    lbi.Selected += OtherItemSelected;
+                    ListBoxSelectItem.Items.Add(lbi);
                     break;
                 default:
                     break;
@@ -147,6 +153,9 @@ namespace SAR_Overlay
                         break;
                     case "Hamball":
                         command += "hamball";
+                        break;
+                    case "Emu":
+                        command += "emu";
                         break;
                     default:
                         return;
