@@ -21,6 +21,7 @@ namespace SAR_Overlay
     public partial class FormSpawnItem : Window
     {
         public string Command;
+        public bool WasClosed = false;
 
         public FormSpawnItem()
         {
@@ -183,6 +184,11 @@ namespace SAR_Overlay
                 LabelAmount.Content = ((int)e.NewValue).ToString();
             else
                 LabelAmount.Content = "Default value";
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            WasClosed = true;
         }
     }
 }

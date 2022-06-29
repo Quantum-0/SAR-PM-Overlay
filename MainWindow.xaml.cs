@@ -164,7 +164,9 @@ namespace SAR_Overlay
         private void ButtonSpawn_Click(object sender, RoutedEventArgs e)
         {
             FSI.ShowDialog();
-            if (!string.IsNullOrEmpty(FSI.Command))
+            if (FSI.WasClosed)
+                FSI = new FormSpawnItem();
+            else if (!string.IsNullOrEmpty(FSI.Command))
                 SAR.ChatInput(FSI.Command);
         }
 
