@@ -65,6 +65,7 @@ namespace SAR_Overlay
             dispatcherTimer.Start();
 
             ButtonKill.Visibility = Visibility.Collapsed;
+            ButtonSpawn.Visibility = Visibility.Collapsed;
         }
 
         private void SAR_ScenarioPaused(object? sender, EventArgs e)
@@ -73,6 +74,7 @@ namespace SAR_Overlay
                 ButtonScenario.Click -= ButtonScenario_Click;
                 ButtonScenario.Click += ButtonScenarioResume_Click;
                 ButtonScenario.Visibility = Visibility.Visible;
+                ButtonSite.Visibility = Visibility.Collapsed;
                 ButtonScenario.Content = "Continue";
             });
         }
@@ -120,6 +122,7 @@ namespace SAR_Overlay
             SAR.ResumeScenario();
             ButtonScenario.Content = "Scenario";
             ButtonScenario.Visibility = Visibility.Collapsed;
+            ButtonSite.Visibility = Visibility.Visible;
         }
 
         private void ButtonScenario_Click(object sender, RoutedEventArgs e)
@@ -187,7 +190,8 @@ namespace SAR_Overlay
 
         private void ButtonKill_MouseRightButtonDown(object sender, MouseButtonEventArgs e) => SAR.Kill(SAR.Me);
 
-        private void ButtonSite_Click(object sender, RoutedEventArgs e) => System.Diagnostics.Process.Start("http://sarpmo.quantum0.ru");
+        private void ButtonSite_Click(object sender, RoutedEventArgs e) =>
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo { FileName = "http://sarpmo.quantum0.ru", UseShellExecute = true });
 
         private void ButtonReload_Click(object sender, RoutedEventArgs e)
         {
