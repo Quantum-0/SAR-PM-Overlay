@@ -197,7 +197,23 @@ namespace SAR_Overlay
 
         private void ButtonReload_Click(object sender, RoutedEventArgs e)
         {
-            // Reset all, must be clicked when match finished
+            SAR = SARFacade.CreateFacade();
+
+            ButtonScenario.Visibility = Visibility.Visible;
+            ButtonStart.Visibility = Visibility.Visible;
+            ButtonSoccer.Visibility = Visibility.Visible;
+            CheckBoxAddBots.Visibility = Visibility.Visible;
+            ButtonScenario.Visibility = Visibility.Visible;
+            SliderGasSpeed.Visibility = Visibility.Visible;
+            ButtonFlight.Visibility = Visibility.Visible;
+
+            ButtonSite.Visibility = Visibility.Collapsed;
+            ButtonReload.Visibility = Visibility.Collapsed;
+            ButtonKill.Visibility = Visibility.Collapsed;
+            ButtonSpawn.Visibility = Visibility.Collapsed;
+            SliderGasSpeed.Value = 1;
+            SliderGasDamage.Value = 1;
+            CheckBoxAddBots.IsChecked = false;
         }
     }
 }
