@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SAR_Overlay"
         mc:Ignorable="d"
-        Title="FormSpawnItem" Height="388" Width="571" Topmost="True" MinHeight="300" MinWidth="320">
+        Title="FormSpawnItem" Height="388" Width="571" Topmost="True" MinHeight="300" MinWidth="320" Closed="Window_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
