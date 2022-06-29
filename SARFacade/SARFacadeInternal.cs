@@ -63,9 +63,11 @@ namespace SAR_Overlay
             return match.Groups[1].Value;
         }
 
-        private string[] ParseScenarioTemplates(string command, SARPlayer[] playerList, List<List<SARPlayer>> teams)
+        private string[] ParseScenarioTemplates(string command, SARPlayer[] playerList, List<List<SARPlayer>> teams, int repeatIndex)
         {
             command = command.Replace("<ME>", (this.Me?.pID ?? 1).ToString());
+            command = command.Replace("<PC>", playerList.Length.ToString());
+            command = command.Replace("<RI>", repeatIndex.ToString());
             // .Replace().Replace() ...
             if (!command.Contains('<') && !command.Contains('>'))
                 return new [] { command };
@@ -89,12 +91,12 @@ namespace SAR_Overlay
             return ResultCommandsList.ToArray();
         }
 
-        private void ExecuteScenarioAction(SARScenario.ScenarioAction sa, SARPlayer[] playerList, List<List<SARPlayer>> teams)
+        private void ExecuteScenarioAction(SARScenario.ScenarioAction sa, SARPlayer[] playerList, List<List<SARPlayer>> teams, int repeatIndex = 0)
         {   
             if (sa is SARScenario.ScenarioActionChatMessage)
             {
                 var cmdText = ((SARScenario.ScenarioActionChatMessage)(sa)).text;
-                var cmdsList = ParseScenarioTemplates(cmdText, playerList, teams);
+                var cmdsList = ParseScenarioTemplates(cmdText, playerList, teams, repeatIndex);
                 foreach (var cmd in cmdsList)
                     ChatInput(cmd);
             }
@@ -132,14 +134,22 @@ namespace SAR_Overlay
             new Task(() =>
             {
                 ChatInput(new[] { "SARPMO: Start Scenario {\"}" + scenario.Title + "{\"}" });
+                int count = 1;
                 foreach (var sa in scenario.Queue)
                 {
-                    ExecuteScenarioAction(sa, playerList, Teams);
+                    if (sa is SARScenario.ScenarioActionRepeat)
+                    {
+                        int.TryParse(ParseScenarioTemplates(((SARScenario.ScenarioActionRepeat)sa).param, playerList, Teams, 0)[0], out count);
+                        continue;
+                    }
+                    for (int i = 0; i < count; i++)
+                        ExecuteScenarioAction(sa, playerList, Teams, i);
                     do
                     {
                         Task.Delay(100).Wait();
                     }
                     while (ScenarioPause);
+                    count = 1;
                 }
             }).Start();
         }

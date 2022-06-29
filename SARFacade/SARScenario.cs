@@ -13,6 +13,7 @@ namespace SAR_Overlay
         public struct ScenarioActionStartMatch : ScenarioAction { public bool bots; }
         public struct ScenarioActionTitle : ScenarioAction { public string title; }
         public struct ScenarioActionPause : ScenarioAction { };
+        public struct ScenarioActionRepeat : ScenarioAction { public string param; };
 
         public List<ScenarioAction> Queue { get; }
         public string Title { get; }
@@ -30,26 +31,44 @@ namespace SAR_Overlay
             List<ScenarioAction> list = new List<ScenarioAction>();
             string? title = null;
             var NeedSelectTeams = false;
+            var RepeatsCount = 1;
             var lines = str.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Where(line => !line.StartsWith("#")).Select(line => line.Split('\t'));
             foreach (var line in lines)
             {
-                if (line.First() == "D") // Delay
+                ScenarioAction? NextAction = null;
+
+                if (line.First() == "R") // Repeats
+                {
+                    // if (int.TryParse(line[1], out RepeatsCount))
+                    //     continue;
+                    // else
+                    NextAction = new ScenarioActionRepeat() { param = line[1] };
+                }
+                else if (line.First() == "D") // Delay
                     if (line[1] == "*") // Until key press
-                        list.Add(new ScenarioActionPause());
+                        NextAction = new ScenarioActionPause();
                     else // Timer
-                        list.Add(new ScenarioActionDelay() { seconds = float.Parse(line[1]) });
+                        NextAction = new ScenarioActionDelay() { seconds = float.Parse(line[1]) };
                 else if (line.First() == "C") // Chat / Command
                 {
                     if (!NeedSelectTeams && (line[1].Contains("<T1>") || line[1].Contains("<T2>") || line[1].Contains("<T0>") || line[1].Contains("<TA>")))
                         NeedSelectTeams = true;
-                    list.Add(new ScenarioActionChatMessage() { text = line[1] });
+                    NextAction = new ScenarioActionChatMessage() { text = line[1] };
                 }
                 else if (line.First() == "P") // Press key
-                    list.Add(new ScenarioActionKeyboardInput() { keys = line[1] });
+                    NextAction = new ScenarioActionKeyboardInput() { keys = line[1] };
                 else if (line.First() == "T") // Title
                     title = line[1];
                 else if (line.First() == "S") // Start match
-                    list.Add(new ScenarioActionStartMatch() { bots = line[1] == "+" });
+                    NextAction = new ScenarioActionStartMatch() { bots = line[1] == "+" };
+
+                if (NextAction != null)
+                    for (int i = 0; i < RepeatsCount; i++)
+                        list.Add(NextAction);
+                RepeatsCount = 1;
+
+                // TODO: R - repeat (loop)
+                // <PC> - players count
 
                 // TODO: Q - select players: opens window to choose player
                 // TODO: R - remove not selected players
